@@ -13,7 +13,7 @@ function Footer() {
           
           {/* Column 1: Logo, Collections & Policies & Social Media Icons */}
           <div>
-            {/* Brand Logo (Actual <img> tag added) */}
+            {/* Brand Logo (Original img tag retained without Cloudinary) */}
             <div className="mb-6">
               <Link to="/" className="inline-block">
                 <img 
@@ -94,22 +94,26 @@ function Footer() {
           <div>
             <h3 className="text-[#d4af37] font-bold text-sm tracking-widest uppercase mb-5">Help & Support</h3>
             
-            {/* Phone Support Box */}
+            {/* Phone Support Box (Updated with both numbers side-by-side) */}
             <div className="bg-white/5 p-3.5 rounded-xl border border-white/10 mb-4 flex items-center gap-3">
               <div className="w-9 h-9 rounded-full bg-[#d4af37]/20 flex items-center justify-center text-[#d4af37] flex-shrink-0">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
               </div>
               <div>
-                <p className="text-[11px] text-gray-300 font-medium">Contact us at</p>
-                <a href="tel:+919883333123" className="text-sm font-bold text-white hover:text-[#d4af37] transition-colors">+91 9883333123</a>
+                <p className="text-[11px] text-gray-300 font-medium mb-0.5">Contact us at</p>
+                <div className="flex flex-wrap items-center gap-1">
+                  <a href="tel:+919610774466" className="text-sm font-bold text-white hover:text-[#d4af37] transition-colors">+91 9610774466</a>
+                  <span className="text-gray-500 mx-0.5 text-xs">|</span>
+                  <a href="tel:+919057201868" className="text-sm font-bold text-white hover:text-[#d4af37] transition-colors">+91 9057201868</a>
+                </div>
               </div>
             </div>
 
-            {/* Dual Studio / Office Locations */}
+            {/* Dual Studio / Office Locations (Updated from Image) */}
             <div className="text-[10px] text-gray-300 space-y-2 mb-4 leading-relaxed border-t border-white/10 pt-3">
               <p className="font-semibold text-[#d4af37]">Registered Offices & Showrooms:</p>
-              <p><strong className="text-white">Studio 1:</strong> 2nd & 4th Floor, Umiya Emporium, Hosur Road, Bangalore 560029, India</p>
-              <p><strong className="text-white">Studio 2:</strong> C-Scheme, Near Ashok Marg, Jaipur, Rajasthan 302001, India</p>
+              <p><strong className="text-white">Flagship Studio:</strong> Suiwal Complex, Opp. Sanganer Police Station, Airport Circle, Tonk Rd, Sanganer, Jaipur, Rajasthan 302029</p>
+              <p><strong className="text-white">Heritage Outlet:</strong> Opp. Torrent CNG pump, near Raj Marriage Garden, Patrakar Colony, Sunder Nagar, Jaipur, Rajasthan 302020</p>
             </div>
 
             {/* Timings at the Bottom */}
