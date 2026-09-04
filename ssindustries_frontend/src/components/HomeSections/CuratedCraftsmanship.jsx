@@ -63,13 +63,13 @@ function CuratedCraftsmanship() {
       <div className="max-w-[1350px] mx-auto">
         
         {/* Section Heading */}
-        <div className="mb-10 text-center md:text-left">
+        <div className="mb-6 text-center md:text-left"> {/* Increased gap here: changed mb-3 to mb-6 */}
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
             <span className="text-[#d4af37] italic mr-2">Curated</span>
             <span className="text-[#13463f]">Craftsmanship</span>
           </h2>
           <div className="h-1 w-20 bg-[#13463f] mt-2 rounded"></div>
-          <p className="text-gray-600 text-sm md:text-base mt-1">
+          <p className="text-gray-600 text-sm md:text-base mt-2"> {/* Added slight top margin to the text too */}
             Explore meticulously designed furniture built to redefine your spaces.
           </p>
         </div>
