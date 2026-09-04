@@ -219,12 +219,22 @@
 
 
 import React, { useState } from 'react';
+import { Cloudinary } from '@cloudinary/url-gen';
+
+// 1. Cloudinary Setup
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: 'zlqgwdom'
+  }
+});
 
 function OurStores() {
   const [isRevealed, setIsRevealed] = useState(false);
   const [mobileOpen, setMobileOpen] = useState({ store1: true, store2: false });
 
-  const sofaImageUrl = "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80";
+  // 2. Background image ko Cloudinary URL se optimize kiya
+  // Apna Public ID 'SOFA_BG_IMAGE_ID_HERE' ki jagah daal dena
+  const sofaImageUrl = cld.image('SS_Front_store_image').format('auto').quality('auto').toURL();
   const slideTransition = 'transform 1.2s cubic-bezier(0.76, 0, 0.24, 1)';
 
   return (
@@ -232,7 +242,6 @@ function OurStores() {
       className="w-full py-10 md:py-14 font-sans overflow-hidden"
       style={{ background: 'linear-gradient(135deg, #13463f 0%, #0a241f 100%)' }}
     >
-      {/* Container width slightly increased */}
       <div className="max-w-[1400px] mx-auto px-4 md:px-8">
         
         {/* Section Header */}
@@ -247,7 +256,6 @@ function OurStores() {
 
         {/* =========================================
             DESKTOP VIEW: CINEMATIC SPLITTING SOFA
-            (Width increased to max-w-[1300px])
             ========================================= */}
         <div className="hidden lg:block relative w-full max-w-[1300px] h-[560px] mx-auto rounded-2xl shadow-2xl overflow-hidden bg-[#0a0a0a] border border-[#d4af37]/30">
           
@@ -269,16 +277,22 @@ function OurStores() {
                 <h3 className="text-3xl font-extrabold text-white mb-1.5 tracking-tight">Flagship Studio</h3>
                 <p className="text-[#d4af37] font-medium tracking-wide uppercase text-xs mb-4">Premium Collection</p>
                 
+                {/* Updated Address & Phone Placeholder */}
                 <p className="text-gray-300 text-xs md:text-sm mb-4 leading-relaxed">
-                  123 Premium Furniture Avenue,<br />
-                  Malviya Nagar, Jaipur, Rajasthan 302017<br/>
-                  <span className="text-[#d4af37] font-bold mt-1.5 inline-block">📞 +91 98765 43210</span>
+                  Suiwal Complex, Opp. Sanganer Police Station,<br />
+                  Airport Circle, Tonk Rd, Sanganer, Jaipur, Rajasthan 302029<br/>
+                  <span className="text-[#d4af37] font-bold mt-1.5 inline-block">📞 +91 9610774466</span>
                 </p>
                 
+                {/* Updated GMap 1 */}
                 <div className="flex-grow w-full bg-white/5 rounded-xl overflow-hidden relative shadow-inner border border-white/10 min-h-[160px]">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-500 font-medium text-xs md:text-sm">
-                    [Paste Store 1 GMap Embed Here]
-                  </div>
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.643447079183!2d75.79363437609207!3d26.819479464089735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dca05ecacadc5%3A0x15ab99be592b04ea!2sSS%20INDUSTRIES%20FURNITURE!5e0!3m2!1sen!2sin!4v1788515149680!5m2!1sen!2sin" 
+                    className="w-full h-full absolute inset-0 border-0" 
+                    allowFullScreen="" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
               </div>
             </div>
@@ -290,16 +304,22 @@ function OurStores() {
                 <h3 className="text-3xl font-extrabold text-white mb-1.5 tracking-tight">Heritage Outlet</h3>
                 <p className="text-[#d4af37] font-medium tracking-wide uppercase text-xs mb-4">Classic Exclusives</p>
                 
+                {/* Updated Address & Phone Placeholder */}
                 <p className="text-gray-300 text-xs md:text-sm mb-4 leading-relaxed">
-                  45 Grand Woodworks Street,<br />
-                  Vaishali Nagar, Jaipur, Rajasthan 302021<br/>
-                  <span className="text-[#d4af37] font-bold mt-1.5 inline-block">📞 +91 98765 43211</span>
+                  Opp. Torrent CNG pump, near Raj Marriage Garden,<br />
+                  Patrakar Colony, Sunder Nagar, Jaipur, Rajasthan 302020<br/>
+                  <span className="text-[#d4af37] font-bold mt-1.5 inline-block">📞 +91 9057201868</span>
                 </p>
                 
+                {/* Updated GMap 2 */}
                 <div className="flex-grow w-full bg-white/5 rounded-xl overflow-hidden relative shadow-inner border border-white/10 min-h-[160px]">
-                  <div className="absolute inset-0 flex items-center justify-center text-gray-500 font-medium text-xs md:text-sm">
-                    [Paste Store 2 GMap Embed Here]
-                  </div>
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.727822047592!2d75.75030257609272!3d26.848607962841406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db528c02d7199%3A0xc9fd4380daea72d6!2sSS%20Industries(FURNITURE)!5e0!3m2!1sen!2sin!4v1788515182526!5m2!1sen!2sin" 
+                    className="w-full h-full absolute inset-0 border-0" 
+                    allowFullScreen="" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
               </div>
             </div>
@@ -316,7 +336,7 @@ function OurStores() {
             </button>
           </div>
 
-          {/* Left Sofa Panel */}
+          {/* Left Sofa Panel (Hover Fixed: Default Transparent, Hover Black) */}
           <div 
             className="absolute top-0 left-0 w-1/2 h-full z-20 border-r-2 border-[#d4af37]/40 shadow-[5px_0_20px_rgba(0,0,0,0.5)]"
             style={{
@@ -327,10 +347,10 @@ function OurStores() {
               transform: isRevealed ? 'translateX(-100%)' : 'translateX(0)'
             }}
           >
-            <div className="absolute inset-0 bg-[#0a241f]/30 hover:bg-transparent transition-colors duration-700 mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-transparent hover:bg-black/70 transition-colors duration-700"></div>
           </div>
 
-          {/* Right Sofa Panel */}
+          {/* Right Sofa Panel (Hover Fixed: Default Transparent, Hover Black) */}
           <div 
             className="absolute top-0 right-0 w-1/2 h-full z-20 border-l-2 border-[#d4af37]/40 shadow-[-5px_0_20px_rgba(0,0,0,0.5)]"
             style={{
@@ -341,13 +361,13 @@ function OurStores() {
               transform: isRevealed ? 'translateX(100%)' : 'translateX(0)'
             }}
           >
-            <div className="absolute inset-0 bg-[#0a241f]/30 hover:bg-transparent transition-colors duration-700 mix-blend-multiply"></div>
+            <div className="absolute inset-0 bg-transparent hover:bg-black/70 transition-colors duration-700"></div>
           </div>
 
         </div>
 
         {/* Mobile View */}
-        <div className="block lg:hidden space-y-3">
+        <div className="block lg:hidden space-y-3 mt-6">
           <div className="bg-[#0a241f] rounded-xl shadow-lg overflow-hidden border border-white/10">
             <button 
               className="w-full p-4 flex justify-between items-center bg-white/5 border-b border-white/10"
@@ -358,15 +378,20 @@ function OurStores() {
                 ↓
               </div>
             </button>
-            <div className={`transition-all duration-500 ease-in-out ${mobileOpen.store1 ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+            <div className={`transition-all duration-500 ease-in-out ${mobileOpen.store1 ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
               <div className="p-4">
                 <p className="text-gray-300 text-xs mb-3 leading-relaxed">
-                  123 Premium Furniture Avenue, Malviya Nagar, Jaipur 302017
+                  Suiwal Complex, Opp. Sanganer Police Station, Airport Circle, Tonk Rd, Sanganer, Jaipur 302029<br/>
+                  <span className="text-[#d4af37] font-bold mt-1.5 inline-block">📞 [MOBILE NO. HERE]</span>
                 </p>
                 <div className="w-full h-48 bg-white/5 rounded-lg relative overflow-hidden border border-white/10">
-                   <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-xs font-bold">
-                     [Paste Store 1 GMap Embed Here]
-                   </div>
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.643447079183!2d75.79363437609207!3d26.819479464089735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dca05ecacadc5%3A0x15ab99be592b04ea!2sSS%20INDUSTRIES%20FURNITURE!5e0!3m2!1sen!2sin!4v1788515149680!5m2!1sen!2sin" 
+                    className="w-full h-full absolute inset-0 border-0" 
+                    allowFullScreen="" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
               </div>
             </div>
@@ -382,15 +407,20 @@ function OurStores() {
                 ↓
               </div>
             </button>
-            <div className={`transition-all duration-500 ease-in-out ${mobileOpen.store2 ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+            <div className={`transition-all duration-500 ease-in-out ${mobileOpen.store2 ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
               <div className="p-4">
                 <p className="text-gray-300 text-xs mb-3 leading-relaxed">
-                  45 Grand Woodworks Street, Vaishali Nagar, Jaipur 302021
+                  Opp. Torrent CNG pump, near Raj Marriage Garden, Patrakar Colony, Sunder Nagar, Jaipur 302020<br/>
+                  <span className="text-[#d4af37] font-bold mt-1.5 inline-block">📞 [MOBILE NO. HERE]</span>
                 </p>
                 <div className="w-full h-48 bg-white/5 rounded-lg relative overflow-hidden border border-white/10">
-                   <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-xs font-bold">
-                     [Paste Store 2 GMap Embed Here]
-                   </div>
+                  <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.727822047592!2d75.75030257609272!3d26.848607962841406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db528c02d7199%3A0xc9fd4380daea72d6!2sSS%20Industries(FURNITURE)!5e0!3m2!1sen!2sin!4v1788515182526!5m2!1sen!2sin" 
+                    className="w-full h-full absolute inset-0 border-0" 
+                    allowFullScreen="" 
+                    loading="lazy" 
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
                 </div>
               </div>
             </div>
