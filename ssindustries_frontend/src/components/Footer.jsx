@@ -19,7 +19,7 @@ function Footer() {
                 <img 
                   src="/S.S Logo.svg" 
                   alt="S.S. Industries Logo" 
-                  className="h-18 w-auto object-contain"
+                  className="h-20 w-auto object-contain"
                 />
               </Link>
             </div>

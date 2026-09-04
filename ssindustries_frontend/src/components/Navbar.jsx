@@ -18,7 +18,7 @@ function Navbar() {
             <img 
               src="/S.S Logo.svg" 
               alt="SS Industries Logo" 
-              className="h-12 sm:h-16 w-auto object-contain" 
+              className="h-12 sm:h-20 w-auto object-contain" 
             />
           </Link>
         </div>
