@@ -54,15 +54,15 @@ function NewArrivals() {
     <section className="w-full py-16 md:py-20 bg-[#fdfaf6] font-sans">
       <div className="max-w-[1400px] mx-auto px-4 md:px-8">
         
-        {/* Header Section */}
+        {/* Section Heading */}
         <div className="mb-10 text-center md:text-left">
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
             <span className="text-[#d4af37] italic mr-2">New</span>
             <span className="text-[#13463f]">Arrivals</span>
           </h2>
           <div className="h-1 w-20 bg-[#13463f] mt-2 rounded"></div>
-          <p className="text-gray-600 text-sm md:text-base max-w-2xl font-medium">
-            Be the first to explore our newest furniture and home essentials, crafted for modern homes.
+          <p className="text-gray-600 text-sm md:text-base mt-1">
+            Be the first to explore our newest furniture and hone essentials, crafted for modern homes.
           </p>
         </div>
 
