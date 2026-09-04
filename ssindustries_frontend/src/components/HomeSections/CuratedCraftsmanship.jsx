@@ -75,14 +75,14 @@ function CuratedCraftsmanship() {
         </div>
 
         {/* Interactive Filter Pills */}
-        <div className="flex items-center gap-3 overflow-x-auto pb-4 mb-10 no-scrollbar" style={{ scrollbarWidth: 'none' }}>
+        <div className="flex items-center gap-3 overflow-x-auto py-3 px-2 mb-10 no-scrollbar" style={{ scrollbarWidth: 'none' }}>
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-300 border shadow-sm ${
+                className={`px-6 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-300 border shadow-sm relative z-10 ${
                   isActive 
                     ? 'bg-[#13463f] text-white border-[#13463f] shadow-md scale-105' 
                     : 'bg-white text-gray-700 border-gray-200 hover:border-[#13463f] hover:text-[#13463f]'
