@@ -1,31 +1,43 @@
 import React from 'react';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedImage, AdvancedVideo } from '@cloudinary/react';
+
+// 1. Global Cloudinary Setup
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: 'zlqgwdom'
+  }
+});
 
 const Gallery = () => {
-  // Column 1: Luxury Living & Sofas (Scroll UPWARD)
+  // 2. Setup Optimized Video Instance
+  const brandVideo = cld.video('ss-industries/gallery/brand-film').format('auto').quality('auto');
+
+  // Column 1: Luxury Living & Sofas
   const col1Images = [
-    { url: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80", alt: "Emerald Velvet Sofa" },
-    { url: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=800&q=80", alt: "Minimalist Accent Armchair" },
-    { url: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80", alt: "Luxury Living Room Suite" },
-    { url: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=800&q=80", alt: "Premium Bed Frame" },
-    { url: "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?auto=format&fit=crop&w=800&q=80", alt: "Teak Dining Setup" },
+    { imageId: "9915f251eb307f5b5f713901a8ee69d5", alt: "Emerald Velvet Sofa" },
+    { imageId: "bd7c111aa444f97427736a32d7f82617", alt: "Minimalist Accent Armchair" },
+    { imageId: "2426239ff80e95586e39df9c07466692", alt: "Luxury Living Room Suite" },
+    { imageId: "5af7e1667d65231bc08a7fb3dd7de377", alt: "Premium Bed Frame" },
+    { imageId: "88e81b1cbf1170baab139afc707b6896", alt: "Teak Dining Setup" },
   ];
 
-  // Column 2: Modern Bedrooms & Mattresses (Scroll DOWNWARD)
+  // Column 2: Modern Bedrooms & Mattresses 
   const col2Images = [
-    { url: "https://images.unsplash.com/photo-1540518614846-7ede433c4550?auto=format&fit=crop&w=800&q=80", alt: "Bespoke Royal Bed" },
-    { url: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80", alt: "Artisan Craftsmanship" },
-    { url: "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?auto=format&fit=crop&w=800&q=80", alt: "Orthopedic Luxury Mattress" },
-    { url: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=800&q=80", alt: "Handmade Wooden Lounge" },
-    { url: "https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=800&q=80", alt: "Designer Studio Finish" },
+    { imageId: "b6fe37d289ec1965516bc6ad0c9e8dcb", alt: "Bespoke Royal Bed" },
+    { imageId: "138c51f5ecb061cc5ddf525a8d5c5582", alt: "Artisan Craftsmanship" },
+    { imageId: "2fbaf3f247b0e88c8dae86def88e6150", alt: "Orthopedic Luxury Mattress" },
+    { imageId: "unnamed_4", alt: "Handmade Wooden Lounge" },
+    { imageId: "photo-1524758631624-e2822e304c36", alt: "Designer Studio Finish" },
   ];
 
-  // Column 3: Dining & Detail Craftsmanship (Scroll UPWARD)
+  // Column 3: Dining & Detail Craftsmanship 
   const col3Images = [
-    { url: "https://images.unsplash.com/photo-1617806118233-18e1de247200?auto=format&fit=crop&w=800&q=80", alt: "Sculptural Lounge Chair" },
-    { url: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", alt: "Architectural Interior Design" },
-    { url: "https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=800&q=80", alt: "Nordic Comfort Seating" },
-    { url: "https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80", alt: "Master Bedroom Suite" },
-    { url: "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=800&q=80", alt: "Premium Finishes" },
+    { imageId: "33706f5082e4698b0bd37f3181ad71d3", alt: "Sculptural Lounge Chair" },
+    { imageId: "photo-1618221195710-dd6b41faaea6", alt: "Architectural Interior Design" },
+    { imageId: "photo-1538688525198-9b88f6f53126", alt: "Nordic Comfort Seating" },
+    { imageId: "0dd8fbdc6deca9cfee40314bb16f98c9", alt: "Master Bedroom Suite" },
+    { imageId: "unnamed_3", alt: "Premium Finishes" },
   ];
 
   return (
@@ -72,26 +84,21 @@ const Gallery = () => {
           {/* Showcase Video Container */}
           <div className="w-full lg:w-[45%] h-[300px] sm:h-[400px] md:h-[460px] lg:h-full rounded-2xl overflow-hidden shadow-2xl border border-[#d4af37]/30 relative group bg-[#0a0a0a]">
             
-            {/* Subtle luxury badge overlay */}
             <div className="absolute top-4 left-4 z-20 pointer-events-none">
               <span className="bg-black/60 backdrop-blur-md border border-[#d4af37]/40 text-[#d4af37] text-[10px] tracking-widest uppercase font-bold px-3.5 py-1.5 rounded-full shadow-md">
                 Brand Film
               </span>
             </div>
 
-            <video 
-              className="w-full h-full object-cover brightness-95 contrast-105"
-              controls 
+            {/* Cloudinary Optimized Video */}
+            <AdvancedVideo 
+              cldVid={brandVideo}
               autoPlay 
               muted 
               loop 
               playsInline
-              preload="metadata"
-            >
-              {/* Replace with your brand video URL */}
-              <source src="https://assets.mixkit.co/videos/preview/mixkit-living-room-with-modern-furniture-41481-large.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+              className="w-full h-full object-cover brightness-95 contrast-105"
+            />
           </div>
 
           {/* Scrolling Grid */}
@@ -100,62 +107,70 @@ const Gallery = () => {
             {/* Column 1 */}
             <div className="flex flex-col gap-3 md:gap-4">
               <div className="flex flex-col gap-3 md:gap-4 animate-scroll-up hover:[animation-play-state:paused]">
-                {[...col1Images, ...col1Images].map((img, i) => (
-                  <div key={`col1-${i}`} className="w-full h-44 sm:h-52 md:h-60 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
-                    <img 
-                      src={img.url} 
-                      alt={img.alt} 
-                      loading="lazy" 
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                      <span className="text-white text-xs tracking-wider font-medium drop-shadow-md">{img.alt}</span>
+                {[...col1Images, ...col1Images].map((img, i) => {
+                  const optimizedImg = cld.image(img.imageId).format('auto').quality('auto');
+                  
+                  return (
+                    <div key={`col1-${i}`} className="w-full h-44 sm:h-52 md:h-60 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
+                      <AdvancedImage 
+                        cldImg={optimizedImg} 
+                        alt={img.alt} 
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                        <span className="text-white text-xs tracking-wider font-medium drop-shadow-md">{img.alt}</span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
             {/* Column 2 */}
             <div className="flex flex-col gap-3 md:gap-4">
               <div className="flex flex-col gap-3 md:gap-4 animate-scroll-down hover:[animation-play-state:paused]">
-                {[...col2Images, ...col2Images].map((img, i) => (
-                  <div key={`col2-${i}`} className="w-full h-44 sm:h-52 md:h-60 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
-                    <img 
-                      src={img.url} 
-                      alt={img.alt} 
-                      loading="lazy" 
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                      <span className="text-white text-xs tracking-wider font-medium drop-shadow-md">{img.alt}</span>
+                {[...col2Images, ...col2Images].map((img, i) => {
+                  const optimizedImg = cld.image(img.imageId).format('auto').quality('auto');
+
+                  return (
+                    <div key={`col2-${i}`} className="w-full h-44 sm:h-52 md:h-60 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
+                      <AdvancedImage 
+                        cldImg={optimizedImg} 
+                        alt={img.alt} 
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                        <span className="text-white text-xs tracking-wider font-medium drop-shadow-md">{img.alt}</span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
-            {/* Column 3 - Displayed from MD (768px) and up */}
+            {/* Column 3 */}
             <div className="hidden md:flex flex-col gap-4">
               <div className="flex flex-col gap-4 animate-scroll-up hover:[animation-play-state:paused]">
-                {[...col3Images, ...col3Images].map((img, i) => (
-                  <div key={`col3-${i}`} className="w-full h-60 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
-                    <img 
-                      src={img.url} 
-                      alt={img.alt} 
-                      loading="lazy" 
-                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                      <span className="text-white text-xs tracking-wider font-medium drop-shadow-md">{img.alt}</span>
+                {[...col3Images, ...col3Images].map((img, i) => {
+                  const optimizedImg = cld.image(img.imageId).format('auto').quality('auto');
+
+                  return (
+                    <div key={`col3-${i}`} className="w-full h-60 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
+                      <AdvancedImage 
+                        cldImg={optimizedImg} 
+                        alt={img.alt} 
+                        className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
+                        <span className="text-white text-xs tracking-wider font-medium drop-shadow-md">{img.alt}</span>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
 
           </div>
-
         </div>
       </div>
     </section>

@@ -10,13 +10,14 @@ import BulkOrderBanner from '../components/HomeSections/BulkOrderBanner';
 import Testimonials from '../components/HomeSections/Testimonials';
 import FAQ from '../components/HomeSections/Faq';
 import Gallery from '../components/HomeSections/Gallery';
+import PromotionalOffers from '../components/HomeSections/PromotionalOffers';
 
 function Home() {
   return (
     <div className="bg-[#0a0a0a] min-h-screen">
       {/* 1. Hero Section - The Premium Banner */}
       <Hero />
-      
+      <PromotionalOffers />
       {/* 2. Featured Categories Section */}
       <FeaturedCategories />
       <OurStores />

@@ -1,10 +1,22 @@
 import React from 'react';
+import { Cloudinary } from '@cloudinary/url-gen';
+import { AdvancedImage } from '@cloudinary/react';
+
+// Global Cloudinary Setup
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: 'zlqgwdom'
+  }
+});
 
 function LiveVideoBanner() {
   const handleBannerClick = () => {
     // Yahan apna VDC modal open karne ka function ya navigation laga dena
     console.log("Live Video Consultation banner clicked!");
   };
+
+  // Setup Optimized Image Instance
+  const previewImg = cld.image('photo-1600210492486-724fe5c67fb0_1').format('auto').quality('auto');
 
   return (
     <section className="w-full py-8 md:py-12 bg-[#fdfaf6] px-4 md:px-8">
@@ -53,9 +65,9 @@ function LiveVideoBanner() {
             {/* Right Graphic / Preview Box */}
             <div className="w-full md:w-[420px] aspect-[16/9] rounded-xl bg-black/30 border border-white/15 overflow-hidden relative shadow-2xl flex items-center justify-center group-hover:border-[#d4af37]/50 transition-colors">
               
-              {/* Dummy Image or Video Call UI mockup */}
-              <img 
-                src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+              {/* Optimized Cloudinary Image */}
+              <AdvancedImage 
+                cldImg={previewImg} 
                 alt="Live Video Shopping Preview" 
                 className="w-full h-full object-cover opacity-75 group-hover:scale-105 transition-transform duration-700"
               />
