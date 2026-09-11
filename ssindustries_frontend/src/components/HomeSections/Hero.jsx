@@ -12,7 +12,7 @@ const cld = new Cloudinary({
 const slides = [
   { imageId: 'hero-0', hasOverlayText: false },
   { imageId: 'hero-2', hasOverlayText: false },
-  { imageId: 'hero-3', hasOverlayText: false },
+  { imageId: 'hero-3_1', hasOverlayText: false },
 ];
 
 function Hero() {

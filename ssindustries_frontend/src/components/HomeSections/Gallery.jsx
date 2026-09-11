@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage, AdvancedVideo } from '@cloudinary/react';
 
@@ -10,8 +10,10 @@ const cld = new Cloudinary({
 });
 
 const Gallery = () => {
+  const [isMuted, setIsMuted] = useState(true);
+
   // 2. Setup Optimized Video Instance
-  const brandVideo = cld.video('ss-industries/gallery/brand-film').format('auto').quality('auto');
+  const brandVideo = cld.video('WhatsApp_Video_2026-09-08_at_10.12.49_AM').format('auto').quality('auto');
 
   // Column 1: Luxury Living & Sofas
   const col1Images = [
@@ -62,7 +64,7 @@ const Gallery = () => {
         }
       `}} />
 
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+      <div className="max-w-[1400px] mx-auto px-4 md:px-12 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center mb-10 md:mb-14 relative z-10">
@@ -78,11 +80,11 @@ const Gallery = () => {
           </p>
         </div>
 
-        {/* Outer Layout wrapper */}
-        <div className="flex flex-col lg:flex-row gap-6 md:gap-8 items-stretch h-auto lg:h-[620px]">
+        {/* Outer Layout wrapper - Changed to justify-between and added larger gaps for big screens */}
+        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 xl:gap-32 justify-center items-center lg:items-stretch h-auto lg:h-[620px]">
           
-          {/* Showcase Video Container */}
-          <div className="w-full lg:w-[45%] h-[300px] sm:h-[400px] md:h-[460px] lg:h-full rounded-2xl overflow-hidden shadow-2xl border border-[#d4af37]/30 relative group bg-[#0a0a0a]">
+          {/* Showcase Video Container - Left aligned automatically due to justify-between */}
+          <div className="relative w-[280px] sm:w-[320px] lg:w-[340px] flex-shrink-0 aspect-[9/16] rounded-2xl overflow-hidden border border-[#d4af37]/30 shadow-2xl">
             
             <div className="absolute top-4 left-4 z-20 pointer-events-none">
               <span className="bg-black/60 backdrop-blur-md border border-[#d4af37]/40 text-[#d4af37] text-[10px] tracking-widest uppercase font-bold px-3.5 py-1.5 rounded-full shadow-md">
@@ -90,28 +92,46 @@ const Gallery = () => {
               </span>
             </div>
 
+            {/* Audio Toggle Button */}
+            <button 
+              onClick={() => setIsMuted(!isMuted)}
+              className="absolute bottom-5 right-4 z-30 bg-black/70 hover:bg-black/90 backdrop-blur-md border border-[#d4af37]/50 text-white p-2.5 rounded-full shadow-lg transition-all"
+              title={isMuted ? "Unmute Audio" : "Mute Audio"}
+            >
+              {isMuted ? (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                </svg>
+              ) : (
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                </svg>
+              )}
+            </button>
+
             {/* Cloudinary Optimized Video */}
             <AdvancedVideo 
               cldVid={brandVideo}
               autoPlay 
-              muted 
+              muted={isMuted} 
               loop 
               playsInline
               className="w-full h-full object-cover brightness-95 contrast-105"
             />
           </div>
 
-          {/* Scrolling Grid */}
-          <div className="w-full lg:w-[55%] h-[480px] sm:h-[540px] lg:h-full grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4 overflow-hidden relative [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
+          {/* Scrolling Grid - Right aligned. Made width slightly larger (w-[55%] to w-[60%]) so it balances the page nicely */}
+          <div className="w-full lg:w-[55%] xl:w-[60%] h-[480px] sm:h-[540px] lg:h-full grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 overflow-hidden relative [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
             
             {/* Column 1 */}
-            <div className="flex flex-col gap-3 md:gap-4">
-              <div className="flex flex-col gap-3 md:gap-4 animate-scroll-up hover:[animation-play-state:paused]">
+            <div className="flex flex-col gap-4 md:gap-5">
+              <div className="flex flex-col gap-4 md:gap-5 animate-scroll-up hover:[animation-play-state:paused]">
                 {[...col1Images, ...col1Images].map((img, i) => {
                   const optimizedImg = cld.image(img.imageId).format('auto').quality('auto');
                   
                   return (
-                    <div key={`col1-${i}`} className="w-full h-44 sm:h-52 md:h-60 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
+                    <div key={`col1-${i}`} className="w-full h-44 sm:h-52 md:h-64 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
                       <AdvancedImage 
                         cldImg={optimizedImg} 
                         alt={img.alt} 
@@ -127,13 +147,13 @@ const Gallery = () => {
             </div>
 
             {/* Column 2 */}
-            <div className="flex flex-col gap-3 md:gap-4">
-              <div className="flex flex-col gap-3 md:gap-4 animate-scroll-down hover:[animation-play-state:paused]">
+            <div className="flex flex-col gap-4 md:gap-5">
+              <div className="flex flex-col gap-4 md:gap-5 animate-scroll-down hover:[animation-play-state:paused]">
                 {[...col2Images, ...col2Images].map((img, i) => {
                   const optimizedImg = cld.image(img.imageId).format('auto').quality('auto');
 
                   return (
-                    <div key={`col2-${i}`} className="w-full h-44 sm:h-52 md:h-60 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
+                    <div key={`col2-${i}`} className="w-full h-44 sm:h-52 md:h-64 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
                       <AdvancedImage 
                         cldImg={optimizedImg} 
                         alt={img.alt} 
@@ -149,13 +169,13 @@ const Gallery = () => {
             </div>
 
             {/* Column 3 */}
-            <div className="hidden md:flex flex-col gap-4">
-              <div className="flex flex-col gap-4 animate-scroll-up hover:[animation-play-state:paused]">
+            <div className="hidden md:flex flex-col gap-4 md:gap-5">
+              <div className="flex flex-col gap-4 md:gap-5 animate-scroll-up hover:[animation-play-state:paused]">
                 {[...col3Images, ...col3Images].map((img, i) => {
                   const optimizedImg = cld.image(img.imageId).format('auto').quality('auto');
 
                   return (
-                    <div key={`col3-${i}`} className="w-full h-60 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
+                    <div key={`col3-${i}`} className="w-full h-64 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
                       <AdvancedImage 
                         cldImg={optimizedImg} 
                         alt={img.alt} 
