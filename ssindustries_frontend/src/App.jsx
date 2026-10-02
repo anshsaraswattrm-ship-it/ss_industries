@@ -12,10 +12,14 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import ContactUs from './pages/ContactUs';
 import GetAQuote from './pages/GetAQuote';
 import VideoConsultation from './pages/VideoConsultation';
+import ScrollToTop from './components/ScrollToTop';
+import BackToTop from './components/BackToTop';
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
+
       <Navbar />
       
       <Routes>
@@ -33,6 +37,8 @@ function App() {
       </Routes>
 
       <Footer />
+
+      <BackToTop />
     </Router>
   );
 }
