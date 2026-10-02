@@ -17,16 +17,16 @@ function Testimonials() {
       name: "Avinash",
       role: "Automotive Engineer",
       quote: "S.S. Industries sofa is not only a piece of furniture, it is part of your life, supporting you in all aspects of your life. I say that this furniture is a part of our life.",
-      imageId: "ChatGPT_Image_Sep_7_2026_12_07_31_PM",
+      imageId: "ChatGPT_Image_Oct_1_2026_12_04_22_PM",
       badgeText: "Happy Home Stories",
-      imageAlign: ""
+      imageAlign: "object-top"
     },
     {
       id: 1,
       name: "Prashanth",
       role: "Filmmaker",
       quote: "The custom wardrobe and bookshelf brought both my wife's and my choices together. Even though we still have different wardrobes for our clothes, we have one bookshelf where both our books come together.",
-      imageId: "WhatsApp_Image_2026-09-07_at_12.20.05",
+      imageId: "ChatGPT_Image_Oct_1_2026_12_05_38_PM",
       badgeText: "Client Experience",
       imageAlign: "object-top" 
     },
@@ -36,7 +36,7 @@ function Testimonials() {
       role: "Interior Designer",
       location: "Vaishali Nagar, Jaipur",
       quote: "Working with S.S. Industries for my clients has been a dream. The finish, the wood quality, and the attention to detail are at par with top international brands.",
-      imageId: "WhatsApp_Image_2026-09-07_at_12.17.01",
+      imageId: "ChatGPT_Image_Oct_1_2026_12_06_54_PM",
       badgeText: "Design Partner",
       imageAlign: "object-top" 
     }
@@ -128,7 +128,7 @@ function Testimonials() {
         </div>
       </section>
 
-      {/* 2. TRUST STRIP (Moved from Hero) */}
+      {/* 2. TRUST STRIP (Moved from Hero)
       <div className="w-full py-4 md:py-5 relative z-10 bg-[#f5ebe0]">
         <div className="max-w-4xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between bg-white border border-gray-100 rounded-xl shadow-sm px-6 py-5 md:px-10 md:py-5">
@@ -173,7 +173,7 @@ function Testimonials() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

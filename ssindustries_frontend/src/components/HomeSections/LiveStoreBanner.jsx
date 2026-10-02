@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage } from '@cloudinary/react';
 
@@ -10,11 +11,6 @@ const cld = new Cloudinary({
 });
 
 function LiveVideoBanner() {
-  const handleBannerClick = () => {
-    // Yahan apna VDC modal open karne ka function ya navigation laga dena
-    console.log("Live Video Consultation banner clicked!");
-  };
-
   // Setup Optimized Image Instance
   const previewImg = cld.image('photo-1600210492486-724fe5c67fb0_1').format('auto').quality('auto');
 
@@ -22,10 +18,10 @@ function LiveVideoBanner() {
     <section className="w-full py-8 md:py-12 bg-[#fdfaf6] px-4 md:px-8">
       <div className="max-w-[1350px] mx-auto">
         
-        {/* Banner Container */}
-        <div 
-          onClick={handleBannerClick}
-          className="relative w-full rounded-2xl overflow-hidden cursor-pointer shadow-lg group transition-transform duration-300 hover:scale-[1.01]"
+        {/* Banner Container wrapped with Link for routing */}
+        <Link 
+          to="/video-call"
+          className="relative w-full rounded-2xl overflow-hidden cursor-pointer shadow-lg group transition-transform duration-300 hover:scale-[1.01] block"
           style={{
             background: 'linear-gradient(135deg, #13463f 0%, #0a241f 100%)',
           }}
@@ -55,10 +51,10 @@ function LiveVideoBanner() {
               </p>
 
               {/* Action Button */}
-              <button className="bg-[#d4af37] hover:bg-[#c29d31] text-[#0a0a0a] font-bold text-xs sm:text-sm px-6 py-3 rounded-full tracking-wider uppercase shadow-md transition-all duration-300 flex items-center gap-2 group-hover:gap-3">
+              <div className="bg-[#d4af37] hover:bg-[#c29d31] text-[#0a0a0a] font-bold text-xs sm:text-sm px-6 py-3 rounded-full tracking-wider uppercase shadow-md transition-all duration-300 flex items-center gap-2 group-hover:gap-3">
                 <span>Start Video Consultation</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
+              </div>
 
             </div>
 
@@ -83,7 +79,7 @@ function LiveVideoBanner() {
 
           </div>
 
-        </div>
+        </Link>
 
       </div>
     </section>

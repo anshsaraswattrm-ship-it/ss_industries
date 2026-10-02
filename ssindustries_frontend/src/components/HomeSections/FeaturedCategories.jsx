@@ -11,20 +11,19 @@ const cld = new Cloudinary({
 });
 
 function ShopByCategories() {
-  // 2. URLs ki jagah imageId placeholders laga diye hain
+  // 2. Updated Categories List
   const categories = [
-    { title: "Sofas & Lounges", link: "/category/sofas", imageId: "2426239ff80e95586e39df9c07466692" },
-    { title: "Signature Beds", link: "/category/beds", imageId: "photo-1505693416388-ac5ce068fe85" },
-    { title: "Dining Ensembles", link: "/category/dining", imageId: "dc285b733572550499b01a835a37f275" },
-    { title: "Custom Interiors", link: "/category/custom", imageId: "a56f3e465d3ce9ae536727c57f0f60af" },
-    { title: "Chairs & Seating", link: "/category/chairs", imageId: "bd7c111aa444f97427736a32d7f82617" },
-    { title: "Wardrobes & Storage", link: "/category/wardrobes", imageId: "d6f2bf295ad94443754c5f53a17e82e1" },
-    { title: "Premium Mattresses", link: "/category/mattresses", imageId: "2fbaf3f247b0e88c8dae86def88e6150" },
-    { title: "TV & Media Units", link: "/category/tv-units", imageId: "138c51f5ecb061cc5ddf525a8d5c5582" },
-    { title: "Coffee & Accent Tables", link: "/category/tables", imageId: "4d2135bbcdbd6fb481bfc2c01a961c2c" },
-    { title: "Bookshelves & Cabinets", link: "/category/cabinets", imageId: "7c310cb9d9231fa1ae8a30b2d7c17597" },
-    { title: "Decor & Soft Furnishings", link: "/category/decor", imageId: "21b54b43cb5f077411e2cfb98b8f2c89" },
-    { title: "Kids & Study Spaces", link: "/category/study", imageId: "97302adaf19516671041a03d6bbed1d4" }
+    { title: "Sofas & Lounges", link: "/products", imageId: "2426239ff80e95586e39df9c07466692" },
+    { title: "Signature Beds", link: "/products", imageId: "photo-1505693416388-ac5ce068fe85" },
+    { title: "Dining Ensembles", link: "/products", imageId: "dc285b733572550499b01a835a37f275" },
+    { title: "Custom Interiors", link: "/products", imageId: "a56f3e465d3ce9ae536727c57f0f60af" },
+    { title: "Chairs & Seating", link: "/products", imageId: "bd7c111aa444f97427736a32d7f82617" },
+    { title: "Wardrobes & Storage", link: "/products", imageId: "d6f2bf295ad94443754c5f53a17e82e1" },
+    { title: "Premium Mattresses", link: "/products", imageId: "2fbaf3f247b0e88c8dae86def88e6150" },
+    { title: "TV & Media Units", link: "/products", imageId: "138c51f5ecb061cc5ddf525a8d5c5582" },
+    { title: "Coffee & Accent Tables", link: "/products", imageId: "4d2135bbcdbd6fb481bfc2c01a961c2c" },
+    { title: "Bookshelves & Cabinets", link: "/products", imageId: "7c310cb9d9231fa1ae8a30b2d7c17597" },
+    { title: "Office Furniture", link: "/products", imageId: "9bd195fc8d3461f4c556bff07a42e350" } 
   ];
 
   const shopLetters = ["S", "H", "O", "P"];
@@ -125,14 +124,19 @@ function ShopByCategories() {
 
         </div>
 
-        {/* Categories Grid Layout */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-5 lg:gap-6">
+        {/* Categories Flex Layout (Replaces Grid to auto-center the bottom row) */}
+        <div className="flex flex-wrap justify-center gap-5 lg:gap-6">
           {categories.map((cat, index) => {
             // 5. Har category image yahan optimize ho rahi hai loop ke andar
             const catImg = cld.image(cat.imageId).format('auto').quality('auto');
 
             return (
-              <Link key={index} to={cat.link} className="flex flex-col items-center group cursor-pointer">
+              <Link 
+                key={index} 
+                to={cat.link} 
+                // Using exact calc widths to maintain 2 cols (mobile), 3 cols (tablet), 6 cols (desktop) while centering the bottom row
+                className="flex flex-col items-center group cursor-pointer w-[calc(50%-10px)] md:w-[calc(33.333%-13.3px)] lg:w-[calc(16.666%-20px)]"
+              >
                 <div className="w-full aspect-square rounded-2xl overflow-hidden bg-white shadow-sm border border-stone-200 group-hover:shadow-md transition-all duration-300 mb-3 relative z-10">
                   <AdvancedImage 
                     cldImg={catImg} 

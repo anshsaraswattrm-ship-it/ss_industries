@@ -1,11 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function BulkOrderBanner() {
-  const handleBulkOrderClick = () => {
-    // Yahan apna bulk order form modal open karne ka ya quote page par redirect karne ka logic lagana
-    console.log("Place Bulk Order clicked!");
-  };
-
   return (
     <section className="w-full py-8 md:py-12 bg-[#fdfaf6] px-4 md:px-8">
       <div className="max-w-[1350px] mx-auto">
@@ -45,14 +41,14 @@ function BulkOrderBanner() {
                 Unlock exclusive trade pricing, custom furniture manufacturing, and end-to-end commercial solutions tailored for your architectural and interior spaces.
               </p>
 
-              {/* Action Button */}
-              <button 
-                onClick={handleBulkOrderClick}
+              {/* Action Link Routing to Get A Quote Page */}
+              <Link 
+                to="/get-a-quote"
                 className="bg-[#d4af37] hover:bg-[#c29d31] text-[#0a0a0a] font-bold text-xs sm:text-sm px-8 py-3.5 rounded-full tracking-wider uppercase shadow-md transition-all duration-300 flex items-center gap-2 hover:gap-3"
               >
                 <span>Place Bulk / B2B Order</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </button>
+              </Link>
 
             </div>
 

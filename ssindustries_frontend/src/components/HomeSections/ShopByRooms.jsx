@@ -14,32 +14,32 @@ function ShopByRooms() {
   const rooms = [
     {
       title: "Living Room",
-      link: "/room/living",
+      link: "/products",
       imageId: "4bec2baeac32b5a4870057abec4fee24"
     },
     {
       title: "Master Bedroom",
-      link: "/room/bedroom",
+      link: "/products",
       imageId: "0dd8fbdc6deca9cfee40314bb16f98c9"
     },
     {
       title: "Home Office",
-      link: "/room/office",
+      link: "/products",
       imageId: "8bd054c64659e20a007fdd05117910e6"
     },
     {
       title: "Dining Space",
-      link: "/room/dining",
+      link: "/products",
       imageId: "88e81b1cbf1170baab139afc707b6896"
     },
     {
       title: "Modular Kitchen",
-      link: "/room/kitchen",
+      link: "/products",
       imageId: "103bf3403dc1d7a807891320305ca8bf"
     },
     {
       title: "Study & Workspaces",
-      link: "/room/study",
+      link: "/products",
       imageId: "73c820c1cdd8d7fdccef51f0bc004d8c"
     }
   ];

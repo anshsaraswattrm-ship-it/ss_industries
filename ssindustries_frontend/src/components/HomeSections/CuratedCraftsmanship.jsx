@@ -18,42 +18,42 @@ function CuratedCraftsmanship() {
     sofas: {
       title: "Sofas & Lounges",
       items: [
-        { name: "L-Shaped Sectionals", imageId: "a289c54bec7635d772a74476e2cf2292", link: "/catalog/l-shape-sofa" },
-        { name: "Leatherette Executive Sofas", imageId: "cdfc7b5891dd6bed02c6ad47409fcce9", link: "/catalog/leatherette-sofa" },
-        { name: "Plush 3-Seater Sofas", imageId: "674d0f17d31a9a92bb56e9ebe3b393a7", link: "/catalog/3-seater-sofa" },
-        { name: "Convertible Sofa Beds", imageId: "87c1a5be4216c203e8c893b94ee4cba4", link: "/catalog/sofa-cum-bed" },
-        { name: "Luxury Recliners", imageId: "0adb19a0ee3992ba453eb038b2fa4ef0", link: "/catalog/recliners" },
+        { name: "L-Shaped Sectionals", imageId: "a289c54bec7635d772a74476e2cf2292", link: "/products" },
+        { name: "Leatherette Executive Sofas", imageId: "cdfc7b5891dd6bed02c6ad47409fcce9", link: "/products" },
+        { name: "Plush 3-Seater Sofas", imageId: "674d0f17d31a9a92bb56e9ebe3b393a7", link: "/products" },
+        { name: "Convertible Sofa Beds", imageId: "87c1a5be4216c203e8c893b94ee4cba4", link: "/products" },
+        { name: "Luxury Recliners", imageId: "0adb19a0ee3992ba453eb038b2fa4ef0", link: "/products" },
       ]
     },
     beds: {
       title: "Signature Beds",
       items: [
-        { name: "King Size Storage Beds", imageId: "0be7c0f5e6cd5004fbebefab529b517e", link: "/catalog/king-beds" },
-        { name: "Upholstered Designer Beds", imageId: "c026438f92eca77cc89aa0bc9f37dd49", link: "/catalog/upholstered-beds" },
-        { name: "Hydraulic Storage Frames", imageId: "7422d06109f83fbe26ff9c431f960cdc", link: "/catalog/hydraulic-beds" },
+        { name: "King Size Storage Beds", imageId: "0be7c0f5e6cd5004fbebefab529b517e", link: "/products" },
+        { name: "Upholstered Designer Beds", imageId: "c026438f92eca77cc89aa0bc9f37dd49", link: "/products" },
+        { name: "Hydraulic Storage Frames", imageId: "7422d06109f83fbe26ff9c431f960cdc", link: "/products" },
       ]
     },
     sheesham: {
       title: "Sheesham Heritage",
       items: [
-        { name: "Solid Wood Dining Sets", imageId: "c9c7fed693b892072f7950dee1ecff9f", link: "/catalog/sheesham-dining" },
-        { name: "Classic Storage Cabinets", imageId: "824efee59392136bf9e70ee89798d92a", link: "/catalog/sheesham-cabinets" },
-        { name: "Heritage Bookshelves", imageId: "52a384ead9856205e6ca017a5cce0c9d", link: "/catalog/bookshelves" },
+        { name: "Solid Wood Dining Sets", imageId: "c9c7fed693b892072f7950dee1ecff9f", link: "/products" },
+        { name: "Classic Storage Cabinets", imageId: "824efee59392136bf9e70ee89798d92a", link: "/products" },
+        { name: "Heritage Bookshelves", imageId: "52a384ead9856205e6ca017a5cce0c9d", link: "/products" },
       ]
     },
     engineered: {
       title: "Modern Engineered",
       items: [
-        { name: "Minimalist TV Media Units", imageId: "487184374813b70c57c383794cf58091", link: "/catalog/tv-units" },
-        { name: "Contemporary Work Desks", imageId: "739353ade2796728b1b6f57a9923c5f9", link: "/catalog/work-desks" },
-        { name: "Modular Wardrobes", imageId: "fd0b5ea5e3b99da583d3f05e375ca79c", link: "/catalog/wardrobes" },
+        { name: "Minimalist TV Media Units", imageId: "487184374813b70c57c383794cf58091", link: "/products" },
+        { name: "Contemporary Work Desks", imageId: "739353ade2796728b1b6f57a9923c5f9", link: "/products" },
+        { name: "Modular Wardrobes", imageId: "fd0b5ea5e3b99da583d3f05e375ca79c", link: "/products" },
       ]
     },
     tables: {
       title: "Tables & Accents",
       items: [
-        { name: "Marble Top Coffee Tables", imageId: "275d02c33eeb3d38fa0050fbc7d34a09", link: "/catalog/coffee-tables" },
-        { name: "Nested Accent Tables", imageId: "aad1d871c4dd4fa95fa82619ca0182d2", link: "/catalog/accent-tables" },
+        { name: "Marble Top Coffee Tables", imageId: "275d02c33eeb3d38fa0050fbc7d34a09", link: "/products" },
+        { name: "Nested Accent Tables", imageId: "aad1d871c4dd4fa95fa82619ca0182d2", link: "/products" },
       ]
     }
   };
