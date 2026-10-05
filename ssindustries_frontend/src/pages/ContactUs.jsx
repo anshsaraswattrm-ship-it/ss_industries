@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Cloudinary } from '@cloudinary/url-gen';
 import { AdvancedImage } from '@cloudinary/react';
 
@@ -12,6 +12,48 @@ const cld = new Cloudinary({
 function ContactUs() {
   // Cloudinary image for hero banner
   const contactHeroBg = cld.image('Contact_Us_SSI_banner2').format('auto').quality('auto:best');
+
+  // Form State
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: ''
+  });
+  const [status, setStatus] = useState({ loading: false, success: false, error: null });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus({ loading: true, success: false, error: null });
+
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong');
+      }
+
+      setStatus({ loading: false, success: true, error: null });
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' }); 
+      
+      setTimeout(() => setStatus({ loading: false, success: false, error: null }), 4000);
+    } catch (error) {
+      setStatus({ loading: false, success: false, error: error.message });
+    }
+  };
 
   return (
     <div className="font-sans text-[#0a0a0a] min-h-screen">
@@ -92,6 +134,108 @@ function ContactUs() {
         </div>
       </section>
 
+      {/* NEW: Contact Form Section */}
+      <section className="bg-white pb-20 px-6 md:px-12 lg:px-20">
+        <div className="max-w-[900px] mx-auto bg-[#fdfdfd] p-8 md:p-12 rounded-3xl border border-[#d2bfa9] shadow-xl relative">
+          
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-[#0a0a0a] tracking-tight">
+              Send Us a <span className="text-[#13463f]">Message</span>
+            </h2>
+            <p className="text-gray-600 mt-3 text-sm md:text-base">
+              Fill out the form below and our team will get back to you shortly.
+            </p>
+          </div>
+          
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-bold text-[#0a0a0a] mb-2">Full Name</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-5 py-3 rounded-xl border border-[#d2bfa9] bg-white focus:outline-none focus:ring-2 focus:ring-[#13463f]/20 focus:border-[#13463f] transition-colors" 
+                  placeholder="John Doe" 
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="block text-sm font-bold text-[#0a0a0a] mb-2">Email Address</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-5 py-3 rounded-xl border border-[#d2bfa9] bg-white focus:outline-none focus:ring-2 focus:ring-[#13463f]/20 focus:border-[#13463f] transition-colors" 
+                  placeholder="john@example.com" 
+                />
+              </div>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label htmlFor="phone" className="block text-sm font-bold text-[#0a0a0a] mb-2">Phone Number</label>
+                <input 
+                  type="tel" 
+                  id="phone" 
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-5 py-3 rounded-xl border border-[#d2bfa9] bg-white focus:outline-none focus:ring-2 focus:ring-[#13463f]/20 focus:border-[#13463f] transition-colors" 
+                  placeholder="+91 9876543210" 
+                />
+              </div>
+              <div>
+                <label htmlFor="subject" className="block text-sm font-bold text-[#0a0a0a] mb-2">Subject</label>
+                <input 
+                  type="text" 
+                  id="subject" 
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  className="w-full px-5 py-3 rounded-xl border border-[#d2bfa9] bg-white focus:outline-none focus:ring-2 focus:ring-[#13463f]/20 focus:border-[#13463f] transition-colors" 
+                  placeholder="How can we help you?" 
+                />
+              </div>
+            </div>
+            
+            <div>
+              <label htmlFor="message" className="block text-sm font-bold text-[#0a0a0a] mb-2">Your Message</label>
+              <textarea 
+                id="message" 
+                name="message"
+                rows="4" 
+                value={formData.message}
+                onChange={handleChange}
+                required
+                className="w-full px-5 py-3 rounded-xl border border-[#d2bfa9] bg-white focus:outline-none focus:ring-2 focus:ring-[#13463f]/20 focus:border-[#13463f] transition-colors resize-none" 
+                placeholder="Tell us about your project or inquiry..."
+              ></textarea>
+            </div>
+
+            {/* Status Messages */}
+            {status.error && <p className="text-red-500 text-sm text-center font-semibold">{status.error}</p>}
+            {status.success && <p className="text-green-600 text-sm text-center font-semibold">Message sent successfully! We will contact you soon.</p>}
+            
+            <div className="text-center pt-4">
+              <button 
+                type="submit" 
+                disabled={status.loading}
+                className="px-10 py-4 bg-[#13463f] text-[#f5ebe0] font-bold text-lg rounded-full hover:bg-[#d4af37] hover:text-[#0a0a0a] transition-all duration-300 shadow-md hover:shadow-xl w-full md:w-auto disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {status.loading ? 'Submitting...' : 'Submit Message'}
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
       {/* 3. Direct Showroom Addresses Section (Light Beige Background) */}
       <section className="bg-[#f5ebe0] py-20 px-6 md:px-12 lg:px-20 border-t border-[#d2bfa9]/50">
         <div className="max-w-[1350px] mx-auto">
@@ -106,7 +250,6 @@ function ContactUs() {
             </p>
           </div>
 
-          {/* Cards for stores directly open without any sliding doors */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             
             {/* Flagship Studio Card */}
