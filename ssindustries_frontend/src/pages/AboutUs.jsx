@@ -33,7 +33,7 @@ function AboutUs() {
       name: "Shubh Suiwal",
       role: "Founder & Director",
       message: "Leading the creative direction, he brings a meticulous eye for detail and a passion for sourcing the world's most exquisite materials. Every piece we create is a reflection of an uncompromising commitment to modern luxury.",
-      img: cld.image('Shubh').format('auto').quality('auto:best'),
+      img: cld.image('Shubh_01').format('auto').quality('auto:best'),
       imgClass: "w-full h-full object-cover transition-all duration-1000 ease-in-out"
     },
     {
@@ -41,7 +41,7 @@ function AboutUs() {
       name: "Akshat Suiwal",
       role: "Founder & Director",
       message: "Driving operations and manufacturing excellence, he ensures that the artisanal craftsmanship meets uncompromising structural standards. Our vision is to deliver furniture that stands the test of time, both in design and durability.",
-      img: cld.image('Akshat').format('auto').quality('auto:best'),
+      img: cld.image('Akshat_01').format('auto').quality('auto:best'),
       imgClass: "w-full h-full object-cover object-[50%_15%] scale-[1.10] transition-all duration-1000 ease-in-out"
     }
   ];

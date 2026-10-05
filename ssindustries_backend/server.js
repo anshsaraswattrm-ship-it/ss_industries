@@ -15,8 +15,34 @@ connectDB();
 
 const app = express();
 
+// ========================================
+// CORS CONFIGURATION
+// ========================================
+const allowedOrigins = [
+  'https://ssindustriesgroup.in',
+  'https://www.ssindustriesgroup.in',
+  'http://localhost:5173', // For Vite Local Development
+  'http://localhost:3000'  // Fallback for React/Next.js Local
+];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Agar request postman, curl ya mobile app se aa rahi hai jiska origin nahi hota
+    if (!origin) return callback(null, true);
+    
+    // Check karo ki origin allowed list mein hai ya nahi
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true); // Allowed
+    } else {
+      callback(new Error('Not allowed by CORS')); // Blocked
+    }
+  },
+  credentials: true, // Agar aage chalkar cookies ya tokens bhejne ho
+  optionsSuccessStatus: 200
+};
+
 // Middleware
-app.use(cors()); // Allow cross-origin requests from your React frontend
+app.use(cors(corsOptions)); // Ab sirf specific origins hi allow honge
 app.use(express.json()); // Allow parsing of JSON body data
 
 // Mount routers
