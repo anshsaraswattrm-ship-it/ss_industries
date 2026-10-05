@@ -10,7 +10,6 @@ const cld = new Cloudinary({
 
 function VideoConsultation() {
   // Setup Optimized Video URL instead of Image
-  // Replace 'Video_Consultation_SSI_Video' with your actual video ID
   const videoHeroUrl = cld.video('video-call_1').toURL();
 
   // Form State
@@ -21,25 +20,47 @@ function VideoConsultation() {
     timeSlot: '',
     interest: ''
   });
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  
+  const [status, setStatus] = useState({ loading: false, submitted: false, error: null });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Video Consultation Booked:', formData);
-    setIsSubmitted(true);
-    
-    // Reset form after 4 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        fullName: '', whatsappNumber: '', preferredDate: '', timeSlot: '', interest: ''
+    setStatus({ loading: true, submitted: false, error: null });
+
+    try {
+      const response = await fetch('http://localhost:5000/api/video-consultation', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-    }, 4000);
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Something went wrong while booking the slot.');
+      }
+
+      // Success
+      setStatus({ loading: false, submitted: true, error: null });
+      
+      // Reset form after 4 seconds
+      setTimeout(() => {
+        setStatus({ loading: false, submitted: false, error: null });
+        setFormData({
+          fullName: '', whatsappNumber: '', preferredDate: '', timeSlot: '', interest: ''
+        });
+      }, 4000);
+
+    } catch (error) {
+      setStatus({ loading: false, submitted: false, error: error.message });
+    }
   };
 
   return (
@@ -140,7 +161,7 @@ function VideoConsultation() {
           <div className="w-full lg:w-3/5 bg-white p-8 md:p-12 rounded-3xl border border-[#d2bfa9] shadow-2xl relative overflow-hidden">
             
             {/* Success Overlay */}
-            {isSubmitted && (
+            {status.submitted && (
               <div className="absolute inset-0 bg-white/95 z-20 flex flex-col items-center justify-center text-center p-8 backdrop-blur-sm transition-all duration-500">
                 <div className="w-20 h-20 bg-[#25D366] text-white rounded-full flex items-center justify-center mb-6 shadow-lg">
                   <svg width="40" height="40" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24">
@@ -154,6 +175,12 @@ function VideoConsultation() {
 
             <form onSubmit={handleSubmit} className="space-y-6 relative z-10">
               
+              {status.error && (
+                <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded-lg text-sm mb-4">
+                  {status.error}
+                </div>
+              )}
+
               {/* Full Name */}
               <div className="flex flex-col">
                 <label htmlFor="fullName" className="text-xs font-bold text-[#13463f] uppercase tracking-wider mb-2">Full Name *</label>
@@ -246,9 +273,10 @@ function VideoConsultation() {
               {/* Submit Button */}
               <button 
                 type="submit" 
-                className="w-full bg-[#13463f] text-[#f5ebe0] font-bold text-sm tracking-widest uppercase py-4.5 rounded-lg hover:bg-[#0a0a0a] hover:text-[#d4af37] transition-all duration-300 shadow-md hover:shadow-lg mt-4"
+                disabled={status.loading}
+                className="w-full bg-[#13463f] text-[#f5ebe0] font-bold text-sm tracking-widest uppercase py-4.5 rounded-lg hover:bg-[#0a0a0a] hover:text-[#d4af37] transition-all duration-300 shadow-md hover:shadow-lg mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Request Video Call
+                {status.loading ? 'Requesting...' : 'Request Video Call'}
               </button>
 
             </form>

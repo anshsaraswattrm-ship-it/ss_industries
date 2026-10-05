@@ -6,8 +6,8 @@ const connectDB = require('./config/db');
 // Route files
 const contactRoutes = require('./routes/contactRoutes');
 const quoteRoutes = require('./routes/quoteRoutes');
+const videoConsultationRoutes = require('./routes/videoConsultationRoutes');
 
-// Load environment variables
 dotenv.config();
 
 // Connect to MongoDB
@@ -48,6 +48,7 @@ app.use(express.json()); // Allow parsing of JSON body data
 // Mount routers
 app.use('/api/contact', contactRoutes);
 app.use('/api/quote', quoteRoutes);
+app.use('/api/video-consultation', videoConsultationRoutes);
 
 // Basic route for testing server
 app.get('/', (req, res) => {

@@ -13,7 +13,7 @@ const cld = new Cloudinary({
 function ShopByCategories() {
   // 2. Updated Categories List
   const categories = [
-    { title: "Sofas & Lounges", link: "/products", imageId: "2426239ff80e95586e39df9c07466692" },
+    { title: "Sofas & Lounges", link: "/products", imageId: "sofas_lounges" },
     { title: "Signature Beds", link: "/products", imageId: "photo-1505693416388-ac5ce068fe85" },
     { title: "Dining Ensembles", link: "/products", imageId: "dc285b733572550499b01a835a37f275" },
     { title: "Custom Interiors", link: "/products", imageId: "a56f3e465d3ce9ae536727c57f0f60af" },
