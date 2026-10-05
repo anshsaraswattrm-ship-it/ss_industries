@@ -1,1 +1,8 @@
+/* Tailwind ko import karna (v4 style) */
 @import "tailwindcss";
+
+/* Custom fonts setup karna */
+@theme {
+  --font-sans: "Montserrat", sans-serif;
+  --font-serif: "Playfair Display", serif;
+}
