@@ -22,7 +22,7 @@ function GetAQuote() {
     setStatus({ loading: true, submitted: false, error: null });
 
     try {
-      const response = await fetch('http://localhost:5000/api/quote', {
+      const response = await fetch('https://ss-industries.onrender.com/api/quote', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
