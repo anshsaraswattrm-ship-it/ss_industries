@@ -2,6 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Footer() {
+  // Function to smoothly scroll to the top
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <footer className="w-full bg-[#0a241f] text-white font-sans pt-16 pb-8 border-t-4 border-[#d4af37]">
       <div className="max-w-[1350px] mx-auto px-4 md:px-8">
@@ -15,7 +23,7 @@ function Footer() {
           <div>
             {/* Brand Logo */}
             <div className="mb-6">
-              <Link to="/" className="inline-block">
+              <Link to="/" onClick={handleScrollToTop} className="inline-block">
                 <img 
                   src="/S.S Logo.svg" 
                   alt="S.S. Industries Logo" 
@@ -26,10 +34,10 @@ function Footer() {
 
             <h3 className="text-[#d4af37] font-bold text-sm tracking-widest uppercase mb-5">Collections & Policies</h3>
             <ul className="space-y-3 text-sm text-gray-300 mb-6">
-              <li><Link to="/products" className="hover:text-white transition-colors flex items-center gap-2"><span>›</span> All Products</Link></li>
-              <li><Link to="/faqs" className="hover:text-white transition-colors flex items-center gap-2"><span>›</span> FAQs</Link></li>
-              <li><Link to="/terms-of-service" className="hover:text-white transition-colors flex items-center gap-2"><span>›</span> Terms Of Service</Link></li>
-              <li><Link to="/privacy-policy" className="hover:text-white transition-colors flex items-center gap-2"><span>›</span> Privacy Policy</Link></li>
+              <li><Link to="/products" onClick={handleScrollToTop} className="hover:text-white transition-colors flex items-center gap-2"><span>›</span> All Products</Link></li>
+              <li><Link to="/faqs" onClick={handleScrollToTop} className="hover:text-white transition-colors flex items-center gap-2"><span>›</span> FAQs</Link></li>
+              <li><Link to="/terms-of-service" onClick={handleScrollToTop} className="hover:text-white transition-colors flex items-center gap-2"><span>›</span> Terms Of Service</Link></li>
+              <li><Link to="/privacy-policy" onClick={handleScrollToTop} className="hover:text-white transition-colors flex items-center gap-2"><span>›</span> Privacy Policy</Link></li>
             </ul>
 
             {/* Social Media & WhatsApp Icons */}
@@ -60,13 +68,13 @@ function Footer() {
           <div>
             <h3 className="text-[#d4af37] font-bold text-sm tracking-widest uppercase mb-5">Quick Links</h3>
             <ul className="space-y-3 text-sm text-gray-300 mb-6">
-              <li><Link to="/video-call" className="hover:text-[#d4af37] transition-colors">Live Video Call</Link></li>
-              <li><Link to="/about-us" className="hover:text-[#d4af37] transition-colors">About Us</Link></li>
-              <li><Link to="/products" className="hover:text-[#d4af37] transition-colors">Products</Link></li>
-              <li><Link to="/custom-furniture" className="hover:text-[#d4af37] transition-colors">Custom Furniture</Link></li>
-              <li><Link to="/careers" className="hover:text-[#d4af37] transition-colors">Careers</Link></li>
-              <li><Link to="/contact-us" className="hover:text-[#d4af37] transition-colors">Contact Us</Link></li>
-              <li><Link to="/get-quote" className="hover:text-[#d4af37] transition-colors">Get a Quote</Link></li>
+              <li><Link to="/video-call" onClick={handleScrollToTop} className="hover:text-[#d4af37] transition-colors">Live Video Call</Link></li>
+              <li><Link to="/about-us" onClick={handleScrollToTop} className="hover:text-[#d4af37] transition-colors">About Us</Link></li>
+              <li><Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37] transition-colors">Products</Link></li>
+              <li><Link to="/custom-furniture" onClick={handleScrollToTop} className="hover:text-[#d4af37] transition-colors">Custom Furniture</Link></li>
+              <li><Link to="/careers" onClick={handleScrollToTop} className="hover:text-[#d4af37] transition-colors">Careers</Link></li>
+              <li><Link to="/contact-us" onClick={handleScrollToTop} className="hover:text-[#d4af37] transition-colors">Contact Us</Link></li>
+              <li><Link to="/get-a-quote" onClick={handleScrollToTop} className="hover:text-[#d4af37] transition-colors">Get a Quote</Link></li>
             </ul>
           </div>
 
@@ -149,12 +157,12 @@ function Footer() {
           <div>
             <h4 className="text-white font-bold uppercase tracking-wider mb-2">Explore Spaces By Rooms</h4>
             <div className="flex flex-wrap gap-x-2 gap-y-1.5 text-gray-400 items-center">
-              <Link to="/products" className="hover:text-[#d4af37]">Living Room</Link> <span className="text-[#d4af37]">|</span>
-              <Link to="/products" className="hover:text-[#d4af37]">Master Bedroom</Link> <span className="text-[#d4af37]">|</span>
-              <Link to="/products" className="hover:text-[#d4af37]">Home Office</Link> <span className="text-[#d4af37]">|</span>
-              <Link to="/products" className="hover:text-[#d4af37]">Dining Space</Link> <span className="text-[#d4af37]">|</span>
-              <Link to="/products" className="hover:text-[#d4af37]">Study Workspaces</Link> <span className="text-[#d4af37]">|</span>
-              <Link to="/products" className="hover:text-[#d4af37]">Modular Kitchen</Link>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Living Room</Link> <span className="text-[#d4af37]">|</span>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Master Bedroom</Link> <span className="text-[#d4af37]">|</span>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Home Office</Link> <span className="text-[#d4af37]">|</span>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Dining Space</Link> <span className="text-[#d4af37]">|</span>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Study Workspaces</Link> <span className="text-[#d4af37]">|</span>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Modular Kitchen</Link>
             </div>
           </div>
 
@@ -162,13 +170,13 @@ function Footer() {
           <div>
             <h4 className="text-white font-bold uppercase tracking-wider mb-2">Explore Spaces By Categories</h4>
             <div className="flex flex-wrap gap-x-2 gap-y-1.5 text-gray-400 items-center">
-              <Link to="/products" className="hover:text-[#d4af37]">Sofas & Lounges</Link> <span className="text-[#d4af37]">|</span>
-              <Link to="/products" className="hover:text-[#d4af37]">Signature Beds</Link> <span className="text-[#d4af37]">|</span>
-              <Link to="/products" className="hover:text-[#d4af37]">Dining Ensembles</Link> <span className="text-[#d4af37]">|</span>
-              <Link to="/products" className="hover:text-[#d4af37]">Chairs & Seating</Link> <span className="text-[#d4af37]">|</span>
-              <Link to="/products" className="hover:text-[#d4af37]">Wardrobes</Link> <span className="text-[#d4af37]">|</span>
-              <Link to="/products" className="hover:text-[#d4af37]">Mattresses</Link> <span className="text-[#d4af37]">|</span>
-              <Link to="/products" className="hover:text-[#d4af37]">Coffee Tables</Link>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Sofas & Lounges</Link> <span className="text-[#d4af37]">|</span>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Signature Beds</Link> <span className="text-[#d4af37]">|</span>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Dining Ensembles</Link> <span className="text-[#d4af37]">|</span>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Chairs & Seating</Link> <span className="text-[#d4af37]">|</span>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Wardrobes</Link> <span className="text-[#d4af37]">|</span>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Mattresses</Link> <span className="text-[#d4af37]">|</span>
+              <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37]">Coffee Tables</Link>
             </div>
           </div>
 

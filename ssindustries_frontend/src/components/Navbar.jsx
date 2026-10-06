@@ -5,6 +5,14 @@ function Navbar() {
   // State to manage the expandable search bar
   const [isSearchOpen, setIsSearchOpen] = useState(false);
 
+  // Function to smoothly scroll to the top
+  const handleScrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
   return (
     <header className="w-full font-sans shadow-md sticky top-0 z-50">
       
@@ -13,7 +21,7 @@ function Navbar() {
         
         {/* LEFT SECTION: Logo */}
         <div className="flex justify-start flex-1">
-          <Link to="/" className="flex items-center hover:opacity-90 transition-opacity">
+          <Link to="/" onClick={handleScrollToTop} className="flex items-center hover:opacity-90 transition-opacity">
             <img 
               src="/S.S Logo.svg" 
               alt="SS Industries Logo" 
@@ -27,10 +35,10 @@ function Navbar() {
           
           {/* Navigation Links */}
           <div className="hidden xl:flex items-center gap-8 text-[15px] font-medium whitespace-nowrap">
-            <Link to="/about-us" className="hover:text-[#d4af37] transition">About Us</Link>
-            <Link to="/products" className="hover:text-[#d4af37] transition">Products</Link>
-            <Link to="/custom-furniture" className="hover:text-[#d4af37] transition">Custom Furniture</Link>
-            <Link to="/careers" className="hover:text-[#d4af37] transition">Careers</Link>
+            <Link to="/about-us" onClick={handleScrollToTop} className="hover:text-[#d4af37] transition">About Us</Link>
+            <Link to="/products" onClick={handleScrollToTop} className="hover:text-[#d4af37] transition">Products</Link>
+            <Link to="/custom-furniture" onClick={handleScrollToTop} className="hover:text-[#d4af37] transition">Custom Furniture</Link>
+            <Link to="/careers" onClick={handleScrollToTop} className="hover:text-[#d4af37] transition">Careers</Link>
           </div>
 
           {/* Search Icon & Expandable Input */}
@@ -61,14 +69,14 @@ function Navbar() {
           </div>
 
           {/* Contact Icon - Routed to /contact-us */}
-          <Link to="/contact-us" className="hidden sm:block p-2 hover:text-[#d4af37] transition" aria-label="Contact">
+          <Link to="/contact-us" onClick={handleScrollToTop} className="hidden sm:block p-2 hover:text-[#d4af37] transition" aria-label="Contact">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
             </svg>
           </Link>
 
           {/* Get a Quote Button */}
-          <Link to="/get-a-quote" className="hidden sm:flex text-[#0a0a0a] bg-[#d4af37] hover:bg-[#c29b2f] px-6 py-2.5 rounded-sm font-bold tracking-wide transition-colors whitespace-nowrap">
+          <Link to="/get-a-quote" onClick={handleScrollToTop} className="hidden sm:flex text-[#0a0a0a] bg-[#d4af37] hover:bg-[#c29b2f] px-6 py-2.5 rounded-sm font-bold tracking-wide transition-colors whitespace-nowrap">
             Get a Quote
           </Link>
 
