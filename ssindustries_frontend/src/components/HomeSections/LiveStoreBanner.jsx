@@ -21,7 +21,7 @@ function LiveVideoBanner() {
         {/* Banner Container wrapped with Link for routing */}
         <Link 
           to="/video-call"
-          className="relative w-full rounded-2xl overflow-hidden cursor-pointer shadow-lg group transition-transform duration-300 hover:scale-[1.01] block"
+          className="relative w-full rounded-2xl overflow-hidden cursor-pointer shadow-lg group transition-transform duration-300 md:hover:scale-[1.01] block"
           style={{
             background: 'linear-gradient(135deg, #13463f 0%, #0a241f 100%)',
           }}
@@ -30,10 +30,11 @@ function LiveVideoBanner() {
           <div className="absolute -right-20 -top-20 w-80 h-80 bg-[#d4af37]/20 rounded-full blur-3xl pointer-events-none"></div>
           <div className="absolute left-1/3 -bottom-20 w-60 h-60 bg-[#1a5f55]/40 rounded-full blur-2xl pointer-events-none"></div>
 
-          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between p-6 sm:p-10 md:p-12 gap-6">
+          {/* Shifted the flex-row split from 'md:' to 'lg:' so iPads display a beautifully stacked layout instead of being cramped horizontally */}
+          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between p-6 sm:p-10 lg:p-12 gap-8 lg:gap-6">
             
             {/* Left Content */}
-            <div className="text-center md:text-left flex flex-col items-center md:items-start max-w-xl">
+            <div className="text-center lg:text-left flex flex-col items-center lg:items-start max-w-xl lg:flex-1">
               
               {/* LIVE STORE Badge */}
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-3.5 py-1 rounded-full mb-4 shadow-sm">
@@ -41,17 +42,18 @@ function LiveVideoBanner() {
                 <span className="text-white text-xs font-bold tracking-widest uppercase">LIVE STORE</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight mb-3 leading-tight">
-                Shop <span className="text-[#d4af37] italic">LIVE</span> on a <br className="hidden sm:block"/>
+              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight mb-3 sm:mb-4 leading-tight">
+                {/* Changed <br> to hidden lg:block so text flows naturally on tablets without awkward line breaks, but stays perfectly formatted on desktop */}
+                Shop <span className="text-[#d4af37] italic">LIVE</span> on a <br className="hidden lg:block"/>
                 video call through S.S. Industries
               </h3>
 
-              <p className="text-gray-200 text-xs sm:text-sm font-light mb-6">
+              <p className="text-gray-200 text-xs sm:text-sm font-light mb-6 sm:mb-8 px-2 lg:px-0">
                 Connect with our furniture experts from the comfort of your home and experience real-time walkthroughs.
               </p>
 
               {/* Action Button */}
-              <div className="bg-[#d4af37] hover:bg-[#c29d31] text-[#0a0a0a] font-bold text-xs sm:text-sm px-6 py-3 rounded-full tracking-wider uppercase shadow-md transition-all duration-300 flex items-center gap-2 group-hover:gap-3">
+              <div className="bg-[#d4af37] hover:bg-[#c29d31] text-[#0a0a0a] font-bold text-xs sm:text-sm px-6 py-3.5 rounded-full tracking-wider uppercase shadow-md transition-all duration-300 flex items-center gap-2 group-hover:gap-3">
                 <span>Start Video Consultation</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </div>
@@ -59,7 +61,8 @@ function LiveVideoBanner() {
             </div>
 
             {/* Right Graphic / Preview Box */}
-            <div className="w-full md:w-[420px] aspect-[16/9] rounded-xl bg-black/30 border border-white/15 overflow-hidden relative shadow-2xl flex items-center justify-center group-hover:border-[#d4af37]/50 transition-colors">
+            {/* Added max-w-md for tablets so the image doesn't stretch massively across the entire screen when stacked, then locked it back to 420px exactly on desktop */}
+            <div className="w-full max-w-md lg:max-w-none lg:w-[420px] lg:shrink-0 aspect-[16/9] rounded-xl bg-black/30 border border-white/15 overflow-hidden relative shadow-2xl flex items-center justify-center group-hover:border-[#d4af37]/50 transition-colors">
               
               {/* Optimized Cloudinary Image */}
               <AdvancedImage 
@@ -70,7 +73,7 @@ function LiveVideoBanner() {
               
               {/* Play / Live Overlay Icon */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-center justify-center">
-                <div className="w-14 h-14 rounded-full bg-[#d4af37] text-[#0a0a0a] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-[#d4af37] text-[#0a0a0a] flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
                 </div>
               </div>

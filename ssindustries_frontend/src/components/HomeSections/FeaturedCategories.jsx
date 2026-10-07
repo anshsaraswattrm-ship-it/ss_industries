@@ -32,7 +32,7 @@ function ShopByCategories() {
   const bgImage = cld.image('photo-1555041469-a586c61ea9bc').format('auto').quality('auto');
 
   return (
-    <section className="bg-[#fafafa] py-16 px-4 md:px-8 lg:px-12 font-sans">
+    <section className="bg-[#fafafa] py-12 md:py-16 px-4 md:px-8 lg:px-12 font-sans">
       <div className="max-w-[1350px] mx-auto">
 
         {/* Solid 3D Extrusion Block Animation & Synchronized Lamp/Image Reveal */}
@@ -66,17 +66,19 @@ function ShopByCategories() {
         `}} />
 
         {/* --- HEADING AREA --- */}
-        <div className="relative mb-12 bg-[#121212] rounded-3xl p-6 md:p-10 overflow-hidden flex flex-col md:flex-row items-center justify-between border border-[#232323] shadow-2xl">
+        {/* Adjusted padding on mobile/tablet (p-5 sm:p-6 md:p-8 lg:p-10) to avoid cramped text */}
+        <div className="relative mb-8 sm:mb-10 lg:mb-12 bg-[#121212] rounded-3xl p-5 sm:p-6 md:p-8 lg:p-10 overflow-hidden flex flex-col md:flex-row items-center justify-between border border-[#232323] shadow-2xl">
 
           {/* Left Typography */}
-          <div className="relative z-20 w-full md:w-3/5 flex flex-col items-start">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white flex items-center gap-3.5 tracking-tight">
+          {/* Changed tablet width to md:w-[55%] so it doesn't collide with the absolute image on iPad Mini */}
+          <div className="relative z-20 w-full md:w-[55%] lg:w-3/5 flex flex-col items-start">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-white flex items-center gap-2.5 sm:gap-3.5 tracking-tight">
               <span className="relative inline-flex select-none">
                 
                 {/* Sparkles */}
                 <span className="shop-sparkle" style={{ top: '-14px', right: '-8px', fontSize: '14px', animationDelay: '0s' }}>✦</span>
                 <span className="shop-sparkle" style={{ top: '10px', right: '-18px', fontSize: '10px', animationDelay: '0.3s' }}>✦</span>
-                <span className="shop-sparkle" style={{ bottom: '-10px', left: '30%', fontSize: '11px', animationDelay: '0.15s' }}>✦</span>
+                <span className="shop-sparkle" style={{ bottom: '-10px', left: '25%', fontSize: '11px', animationDelay: '0.15s' }}>✦</span>
 
                 {shopLetters.map((letter, i) => (
                   <span
@@ -93,18 +95,19 @@ function ShopByCategories() {
               </span>
               <span className="text-[#f5f5f5] font-extrabold ml-1 z-0 relative">By Categories</span>
             </h2>
-            <p className="text-[#a3a3a3] mt-3 text-xs md:text-sm max-w-md leading-relaxed font-normal">
+            <p className="text-[#a3a3a3] mt-3 sm:mt-4 text-[11px] sm:text-xs md:text-sm max-w-md leading-relaxed font-normal pr-4 md:pr-0">
               Explore our curated collections of exquisite furniture, crafted for modern luxury living.
             </p>
           </div>
 
           {/* Right Side Image */}
-          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-72 md:w-[26rem] lg:w-[30rem] h-48 md:h-56 pointer-events-none hidden md:block overflow-hidden">
+          {/* Shrunk the image slightly on standard iPads (md:w-[22rem]) to ensure it doesn't overlap text on a 768px screen, returning to your original lg:w-[30rem] on desktop */}
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-72 md:w-[22rem] lg:w-[30rem] h-48 md:h-56 pointer-events-none hidden md:block overflow-hidden">
             <div className="absolute inset-0 z-20 bg-gradient-to-r from-[#121212] via-[#121212]/10 to-[#121212]/20" />
             <div className="absolute inset-0 z-20 bg-gradient-to-b from-[#121212] via-transparent to-[#121212]/40" />
 
             {/* --- THE GLOWING LAMP (WHITE GLOW) --- */}
-            <div className="absolute bottom-[5%] left-[2%] z-30 flex flex-col items-center">
+            <div className="absolute bottom-[5%] left-[2%] z-30 flex flex-col items-center scale-90 lg:scale-100 origin-bottom-left">
               <div className="lamp-aura absolute top-[-10px] w-48 h-48 bg-white/20 rounded-full blur-[40px] pointer-events-none" />
               <svg width="60" height="200" viewBox="0 0 50 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="relative z-10">
                 <rect x="23" y="40" width="4" height="155" fill="#1f1f1f"/>
@@ -124,7 +127,7 @@ function ShopByCategories() {
 
         </div>
 
-        {/* Categories Flex Layout (Replaces Grid to auto-center the bottom row) */}
+        {/* Categories Flex Layout (Math unchanged to preserve exact column structure) */}
         <div className="flex flex-wrap justify-center gap-5 lg:gap-6">
           {categories.map((cat, index) => {
             // 5. Har category image yahan optimize ho rahi hai loop ke andar
@@ -134,10 +137,10 @@ function ShopByCategories() {
               <Link 
                 key={index} 
                 to={cat.link} 
-                // Using exact calc widths to maintain 2 cols (mobile), 3 cols (tablet), 6 cols (desktop) while centering the bottom row
+                // Math preserved perfectly: 2 cols (mobile), 3 cols (tablet), 6 cols (desktop)
                 className="flex flex-col items-center group cursor-pointer w-[calc(50%-10px)] md:w-[calc(33.333%-13.3px)] lg:w-[calc(16.666%-20px)]"
               >
-                <div className="w-full aspect-square rounded-2xl overflow-hidden bg-white shadow-sm border border-stone-200 group-hover:shadow-md transition-all duration-300 mb-3 relative z-10">
+                <div className="w-full aspect-square rounded-2xl overflow-hidden bg-white shadow-sm border border-stone-200 group-hover:shadow-md transition-all duration-300 mb-2 sm:mb-3 relative z-10">
                   <AdvancedImage 
                     cldImg={catImg} 
                     alt={cat.title} 
@@ -145,7 +148,8 @@ function ShopByCategories() {
                   />
                   <div className="absolute inset-0 bg-[#d4af37]/0 group-hover:bg-[#d4af37]/10 transition-colors duration-300"></div>
                 </div>
-                <span className="text-[#1c1917] text-sm md:text-base font-medium text-center group-hover:text-[#b45309] transition-colors duration-300 px-2 mt-1">
+                {/* Adjusted text sizing down slightly on mobile so longer titles ("Coffee & Accent Tables") don't break into 3 messy lines on small screens */}
+                <span className="text-[#1c1917] text-[11px] sm:text-sm md:text-base font-medium text-center group-hover:text-[#b45309] transition-colors duration-300 px-1 sm:px-2 mt-1">
                   {cat.title}
                 </span>
               </Link>

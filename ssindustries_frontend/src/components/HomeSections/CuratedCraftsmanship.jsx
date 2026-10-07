@@ -67,32 +67,34 @@ function CuratedCraftsmanship() {
   ];
 
   return (
-    <section className="w-full py-16 px-4 md:px-8 lg:px-12 bg-[#fdfaf6] font-sans">
+    <section className="w-full py-12 md:py-16 px-4 md:px-8 lg:px-12 bg-[#fdfaf6] font-sans">
       <div className="max-w-[1350px] mx-auto">
         
         {/* Section Heading */}
-        <div className="mb-6 text-center md:text-left">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
+        {/* Added flex-col & items-center/start to ensure the decorative line aligns perfectly with text on all devices */}
+        <div className="mb-6 text-center md:text-left flex flex-col items-center md:items-start">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
             <span className="text-[#d4af37] italic mr-2">Curated</span>
             <span className="text-[#13463f]">Craftsmanship</span>
           </h2>
           <div className="h-1 w-20 bg-[#13463f] mt-2 rounded"></div>
-          <p className="text-gray-600 text-sm md:text-base mt-2">
+          <p className="text-gray-600 text-sm md:text-base mt-4 max-w-2xl">
             Explore meticulously designed furniture built to redefine your spaces.
           </p>
         </div>
 
         {/* Interactive Filter Pills */}
-        <div className="flex items-center gap-3 overflow-x-auto py-3 px-2 mb-10 no-scrollbar" style={{ scrollbarWidth: 'none' }}>
+        {/* Added snap scrolling for smooth touch experience on mobile devices and md:flex-wrap for tablet breathing room */}
+        <div className="flex items-center md:flex-wrap gap-2 sm:gap-3 overflow-x-auto py-3 px-1 sm:px-2 mb-8 sm:mb-10 no-scrollbar snap-x snap-mandatory" style={{ scrollbarWidth: 'none' }}>
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-300 border shadow-sm relative z-10 ${
+                className={`snap-start px-5 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-semibold whitespace-nowrap transition-all duration-300 border shadow-sm relative z-10 ${
                   isActive 
-                    ? 'bg-[#13463f] text-white border-[#13463f] shadow-md scale-105' 
+                    ? 'bg-[#13463f] text-white border-[#13463f] shadow-md scale-100 sm:scale-105' 
                     : 'bg-white text-gray-700 border-gray-200 hover:border-[#13463f] hover:text-[#13463f]'
                 }`}
               >
@@ -103,7 +105,8 @@ function CuratedCraftsmanship() {
         </div>
 
         {/* Sub-Category Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-5 md:gap-6">
+        {/* Shifted the 5-column layout to 'xl', giving iPad Pro (lg: 1024px) 4 columns so the cards aren't squished */}
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-5 md:gap-6">
           {categoryData[activeTab].items.map((item, index) => {
             // Generate optimized image on the fly
             const optimizedImg = cld.image(item.imageId).format('auto').quality('auto');
@@ -125,12 +128,12 @@ function CuratedCraftsmanship() {
                 </div>
 
                 {/* Title & Action */}
-                <div className="p-4 flex flex-col justify-between flex-grow">
-                  <h3 className="text-[#0a0a0a] text-sm md:text-base font-bold group-hover:text-[#13463f] transition-colors leading-snug">
+                <div className="p-3 sm:p-4 flex flex-col justify-between flex-grow">
+                  <h3 className="text-[#0a0a0a] text-xs sm:text-sm md:text-base font-bold group-hover:text-[#13463f] transition-colors leading-snug">
                     {item.name}
                   </h3>
-                  <span className="text-xs font-semibold text-[#d4af37] mt-3 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                    Explore Collection →
+                  <span className="text-[10px] sm:text-xs font-semibold text-[#d4af37] mt-2 sm:mt-3 flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    Explore Collection <span aria-hidden="true">&rarr;</span>
                   </span>
                 </div>
               </Link>

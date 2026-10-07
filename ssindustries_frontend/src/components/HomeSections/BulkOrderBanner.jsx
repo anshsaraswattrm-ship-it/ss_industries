@@ -20,7 +20,7 @@ function BulkOrderBanner() {
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between p-6 sm:p-10 md:p-12 gap-8">
             
             {/* Left Content */}
-            <div className="text-center lg:text-left flex flex-col items-center lg:items-start max-w-xl">
+            <div className="text-center lg:text-left flex flex-col items-center lg:items-start max-w-xl lg:flex-1">
               
               {/* Commercial Domains Tags */}
               <div className="flex flex-wrap justify-center lg:justify-start gap-2 mb-4 text-xs font-semibold tracking-wider text-[#d4af37] uppercase">
@@ -53,26 +53,28 @@ function BulkOrderBanner() {
             </div>
 
             {/* Right Graphic / Mockup Illustration Style */}
-            <div className="w-full lg:w-[450px] bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 relative shadow-2xl flex items-center justify-center">
+            {/* Added max-w-md for tablets to prevent weird stretching, ensuring it scales correctly up to lg screens */}
+            <div className="w-full max-w-md lg:max-w-none lg:w-[450px] lg:shrink-0 bg-white/5 backdrop-blur-md border border-white/10 rounded-xl p-6 relative shadow-2xl flex items-center justify-center">
               
-              <div className="flex items-center justify-between w-full gap-4 text-white">
+              {/* Changed mobile layout to flex-col to stack neatly on small screens, returning to flex-row on sm and above */}
+              <div className="flex flex-col sm:flex-row items-center justify-between w-full gap-3 sm:gap-4 text-white">
                 
                 {/* Feature 1 */}
-                <div className="flex flex-col items-center text-center p-3 bg-white/5 rounded-lg border border-white/10 flex-1">
+                <div className="flex flex-col items-center text-center p-3 sm:p-2 md:p-3 bg-white/5 rounded-lg border border-white/10 flex-1 w-full sm:w-auto">
                   <div className="w-10 h-10 rounded-full bg-[#d4af37]/20 flex items-center justify-center text-[#d4af37] mb-2 font-bold">📦</div>
                   <span className="text-xs font-semibold mb-1">Custom Sizing</span>
                   <span className="text-[10px] text-gray-300">Built to blueprint specs</span>
                 </div>
 
                 {/* Feature 2 */}
-                <div className="flex flex-col items-center text-center p-3 bg-white/5 rounded-lg border border-white/10 flex-1">
+                <div className="flex flex-col items-center text-center p-3 sm:p-2 md:p-3 bg-white/5 rounded-lg border border-white/10 flex-1 w-full sm:w-auto">
                   <div className="w-10 h-10 rounded-full bg-[#d4af37]/20 flex items-center justify-center text-[#d4af37] mb-2 font-bold">💼</div>
                   <span className="text-xs font-semibold mb-1">Trade Pricing</span>
                   <span className="text-[10px] text-gray-300">Special volume discounts</span>
                 </div>
 
                 {/* Feature 3 */}
-                <div className="flex flex-col items-center text-center p-3 bg-white/5 rounded-lg border border-white/10 flex-1">
+                <div className="flex flex-col items-center text-center p-3 sm:p-2 md:p-3 bg-white/5 rounded-lg border border-white/10 flex-1 w-full sm:w-auto">
                   <div className="w-10 h-10 rounded-full bg-[#d4af37]/20 flex items-center justify-center text-[#d4af37] mb-2 font-bold">🚚</div>
                   <span className="text-xs font-semibold mb-1">Priority Delivery</span>
                   <span className="text-[10px] text-gray-300">Pan-India site dispatch</span>

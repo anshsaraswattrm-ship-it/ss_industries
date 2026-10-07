@@ -44,7 +44,7 @@ const Gallery = () => {
 
   return (
     <section 
-      className="py-14 md:py-20 font-sans relative overflow-hidden text-white"
+      className="py-12 sm:py-14 md:py-20 font-sans relative overflow-hidden text-white"
       style={{ background: 'linear-gradient(135deg, #0d2e29 0%, #061815 100%)' }}
     >
       <style dangerouslySetInnerHTML={{__html: `
@@ -64,30 +64,30 @@ const Gallery = () => {
         }
       `}} />
 
-      <div className="max-w-[1400px] mx-auto px-4 md:px-12 lg:px-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-12 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center mb-10 md:mb-14 relative z-10">
-          <span className="text-[#d4af37] text-[11px] md:text-xs tracking-[0.3em] uppercase font-semibold block mb-2">
+          <span className="text-[#d4af37] text-[10px] sm:text-[11px] md:text-xs tracking-[0.3em] uppercase font-semibold block mb-2">
             The Atelier Experience
           </span>
-          <h2 className="text-3xl md:text-5xl font-extrabold text-white tracking-tight inline-block">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight inline-block">
             Our <span className="font-light italic text-[#d4af37]">Gallery</span>
           </h2>
-          <div className="w-16 h-0.5 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mt-4"></div>
-          <p className="text-gray-300 max-w-lg mx-auto text-xs md:text-sm mt-3 font-normal">
+          <div className="w-12 sm:w-16 h-0.5 bg-gradient-to-r from-transparent via-[#d4af37] to-transparent mx-auto mt-3 sm:mt-4"></div>
+          <p className="text-gray-300 max-w-lg mx-auto text-[11px] sm:text-xs md:text-sm mt-3 font-normal px-2">
             A glimpse into our bespoke craftsmanship, hand-finished silhouettes, and enduring comfort.
           </p>
         </div>
 
-        {/* Outer Layout wrapper - Changed to justify-between and added larger gaps for big screens */}
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 xl:gap-32 justify-center items-center lg:items-stretch h-auto lg:h-[620px]">
+        {/* Outer Layout wrapper - Adjusted gaps for mobile/tablet to give elements room to breathe */}
+        <div className="flex flex-col lg:flex-row gap-10 md:gap-14 lg:gap-20 xl:gap-32 justify-center items-center lg:items-stretch h-auto lg:h-[620px]">
           
-          {/* Showcase Video Container - Left aligned automatically due to justify-between */}
-          <div className="relative w-[280px] sm:w-[320px] lg:w-[340px] flex-shrink-0 aspect-[9/16] rounded-2xl overflow-hidden border border-[#d4af37]/30 shadow-2xl">
+          {/* Showcase Video Container - Scaled width gracefully for smaller viewports */}
+          <div className="relative w-[240px] sm:w-[280px] md:w-[320px] lg:w-[340px] flex-shrink-0 aspect-[9/16] rounded-2xl overflow-hidden border border-[#d4af37]/30 shadow-2xl">
             
-            <div className="absolute top-4 left-4 z-20 pointer-events-none">
-              <span className="bg-black/60 backdrop-blur-md border border-[#d4af37]/40 text-[#d4af37] text-[10px] tracking-widest uppercase font-bold px-3.5 py-1.5 rounded-full shadow-md">
+            <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-20 pointer-events-none">
+              <span className="bg-black/60 backdrop-blur-md border border-[#d4af37]/40 text-[#d4af37] text-[9px] sm:text-[10px] tracking-widest uppercase font-bold px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full shadow-md">
                 Brand Film
               </span>
             </div>
@@ -95,16 +95,16 @@ const Gallery = () => {
             {/* Audio Toggle Button */}
             <button 
               onClick={() => setIsMuted(!isMuted)}
-              className="absolute bottom-5 right-4 z-30 bg-black/70 hover:bg-black/90 backdrop-blur-md border border-[#d4af37]/50 text-white p-2.5 rounded-full shadow-lg transition-all"
+              className="absolute bottom-4 right-3 sm:bottom-5 sm:right-4 z-30 bg-black/70 hover:bg-black/90 backdrop-blur-md border border-[#d4af37]/50 text-white p-2 sm:p-2.5 rounded-full shadow-lg transition-all"
               title={isMuted ? "Unmute Audio" : "Mute Audio"}
             >
               {isMuted ? (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
                 </svg>
               ) : (
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 text-[#d4af37]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
                 </svg>
               )}
@@ -121,24 +121,25 @@ const Gallery = () => {
             />
           </div>
 
-          {/* Scrolling Grid - Right aligned. Made width slightly larger (w-[55%] to w-[60%]) so it balances the page nicely */}
-          <div className="w-full lg:w-[55%] xl:w-[60%] h-[480px] sm:h-[540px] lg:h-full grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 overflow-hidden relative [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
+          {/* Scrolling Grid - Adjusted heights across devices so it doesn't get squished or overly tall */}
+          <div className="w-full md:w-[90%] lg:w-[55%] xl:w-[60%] h-[400px] sm:h-[480px] md:h-[560px] lg:h-full grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-5 overflow-hidden relative [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)]">
             
             {/* Column 1 */}
-            <div className="flex flex-col gap-4 md:gap-5">
-              <div className="flex flex-col gap-4 md:gap-5 animate-scroll-up hover:[animation-play-state:paused]">
+            <div className="flex flex-col gap-3 sm:gap-4 md:gap-5">
+              <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 animate-scroll-up hover:[animation-play-state:paused]">
                 {[...col1Images, ...col1Images].map((img, i) => {
                   const optimizedImg = cld.image(img.imageId).format('auto').quality('auto');
                   
                   return (
-                    <div key={`col1-${i}`} className="w-full h-44 sm:h-52 md:h-64 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
+                    // Graceful image height scaling 
+                    <div key={`col1-${i}`} className="w-full h-36 sm:h-44 md:h-48 lg:h-64 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
                       <AdvancedImage 
                         cldImg={optimizedImg} 
                         alt={img.alt} 
                         className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                        <span className="text-white text-xs tracking-wider font-medium drop-shadow-md">{img.alt}</span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2 sm:p-3">
+                        <span className="text-white text-[10px] sm:text-xs tracking-wider font-medium drop-shadow-md">{img.alt}</span>
                       </div>
                     </div>
                   );
@@ -147,20 +148,20 @@ const Gallery = () => {
             </div>
 
             {/* Column 2 */}
-            <div className="flex flex-col gap-4 md:gap-5">
-              <div className="flex flex-col gap-4 md:gap-5 animate-scroll-down hover:[animation-play-state:paused]">
+            <div className="flex flex-col gap-3 sm:gap-4 md:gap-5">
+              <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 animate-scroll-down hover:[animation-play-state:paused]">
                 {[...col2Images, ...col2Images].map((img, i) => {
                   const optimizedImg = cld.image(img.imageId).format('auto').quality('auto');
 
                   return (
-                    <div key={`col2-${i}`} className="w-full h-44 sm:h-52 md:h-64 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
+                    <div key={`col2-${i}`} className="w-full h-36 sm:h-44 md:h-48 lg:h-64 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
                       <AdvancedImage 
                         cldImg={optimizedImg} 
                         alt={img.alt} 
                         className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-110" 
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-3">
-                        <span className="text-white text-xs tracking-wider font-medium drop-shadow-md">{img.alt}</span>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-2 sm:p-3">
+                        <span className="text-white text-[10px] sm:text-xs tracking-wider font-medium drop-shadow-md">{img.alt}</span>
                       </div>
                     </div>
                   );
@@ -168,14 +169,14 @@ const Gallery = () => {
               </div>
             </div>
 
-            {/* Column 3 */}
-            <div className="hidden md:flex flex-col gap-4 md:gap-5">
-              <div className="flex flex-col gap-4 md:gap-5 animate-scroll-up hover:[animation-play-state:paused]">
+            {/* Column 3 (Only visible on md and up) */}
+            <div className="hidden md:flex flex-col gap-3 sm:gap-4 md:gap-5">
+              <div className="flex flex-col gap-3 sm:gap-4 md:gap-5 animate-scroll-up hover:[animation-play-state:paused]">
                 {[...col3Images, ...col3Images].map((img, i) => {
                   const optimizedImg = cld.image(img.imageId).format('auto').quality('auto');
 
                   return (
-                    <div key={`col3-${i}`} className="w-full h-64 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
+                    <div key={`col3-${i}`} className="w-full md:h-48 lg:h-64 rounded-xl overflow-hidden shadow-lg border border-white/10 flex-shrink-0 group relative cursor-pointer">
                       <AdvancedImage 
                         cldImg={optimizedImg} 
                         alt={img.alt} 
