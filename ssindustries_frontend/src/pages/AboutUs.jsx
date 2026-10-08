@@ -34,7 +34,8 @@ function AboutUs() {
       role: "Founder & Director",
       message: "Leading the creative direction, he brings a meticulous eye for detail and a passion for sourcing the world's most exquisite materials. Every piece we create is a reflection of an uncompromising commitment to modern luxury.",
       img: cld.image('Shubh_01').format('auto').quality('auto:best'),
-      imgClass: "w-full h-full object-cover transition-all duration-1000 ease-in-out"
+      // FIX: Added 'object-top lg:object-center' - Keeps the head visible on iPad portrait, but restores original centering on Desktop.
+      imgClass: "w-full h-full object-cover object-top lg:object-center transition-all duration-1000 ease-in-out"
     },
     {
       id: 1,
