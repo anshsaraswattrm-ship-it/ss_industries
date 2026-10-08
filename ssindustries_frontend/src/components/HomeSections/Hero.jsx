@@ -11,7 +11,7 @@ const cld = new Cloudinary({
 
 // Added mobileImageId for you to insert your Cloudinary mobile banner names
 const slides = [
-  { imageId: 'hero-0', mobileImageId: 'mob_01', hasOverlayText: false },
+  { imageId: 'hero-0', mobileImageId: 'mob_1', hasOverlayText: false },
   { imageId: 'hero-2', mobileImageId: '02', hasOverlayText: false },
   { imageId: 'hero-3_1', mobileImageId: '03', hasOverlayText: false },
 ];
