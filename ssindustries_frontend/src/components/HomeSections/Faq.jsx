@@ -36,6 +36,21 @@ function FAQ() {
 
   return (
     <section className="w-full py-12 md:py-16 lg:py-20 bg-[#fdfaf6] font-sans text-[#0a0a0a]">
+      {/* Target-locked mobile styling injection so there's zero chance of CSS caching failure */}
+      <style>{`
+        @media (max-width: 640px) {
+          .faq-mobile-answer {
+            padding-top: 1rem !important;
+            margin-top: 0 !important;
+          }
+          .faq-mobile-line {
+            border-top: 1px solid #f3f4f6;
+            margin-bottom: 0.75rem !important;
+            margin-top: 0.25rem !important;
+          }
+        }
+      `}</style>
+
       <div className="max-w-[900px] mx-auto px-4 sm:px-6 md:px-8">
         
         {/* Section Header */}
@@ -79,9 +94,9 @@ function FAQ() {
 
                 {/* Answer Content */}
                 <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  {/* MOBILE CENTERING FIX: Changed 'pt-0 mt-2' to 'pt-4 mt-0 sm:pt-0 sm:mt-2' 
-                      This perfectly balances the padding above and below the line on phones, while keeping your exact design for tablet/desktop */}
-                  <div className="p-4 sm:p-6 pt-4 mt-0 sm:pt-0 sm:mt-2 text-gray-700 text-xs sm:text-sm md:text-base font-normal leading-relaxed border-t border-gray-100">
+                  {/* EXACT ORIGINAL DESKTOP CODE + Mobile Safe Classes */}
+                  <div className="p-4 sm:p-6 pt-0 mt-2 text-gray-700 text-xs sm:text-sm md:text-base font-normal leading-relaxed border-t border-gray-100 faq-mobile-answer">
+                    <div className="hidden sm:hidden faq-mobile-line"></div>
                     {faq.answer}
                   </div>
                 </div>
