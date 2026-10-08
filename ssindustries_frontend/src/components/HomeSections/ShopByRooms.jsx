@@ -45,19 +45,21 @@ function ShopByRooms() {
   ];
 
   return (
-    <section className="bg-[#fdfaf6] py-16 px-4 md:px-8 lg:px-12 font-sans">
+    <section className="bg-[#fdfaf6] py-12 md:py-16 px-4 md:px-8 lg:px-12 font-sans">
       <div className="max-w-[1350px] mx-auto">
         
-        <div className="mb-10 text-center md:text-left">
-          <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-3">
+        {/* Added flex-col & items-center/start so the green decorative line stays perfectly centered under the text on mobile */}
+        <div className="mb-8 md:mb-10 text-center md:text-left flex flex-col items-center md:items-start">
+          {/* Scaled text gracefully for smaller viewports */}
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight mb-2 sm:mb-3">
             <span className="text-[#d4af37] italic mr-2">Shop</span>
             <span className="text-[#13463f]">by rooms</span>
           </h2>
-          <div className="h-1 w-20 bg-[#13463f] mt-2 rounded"></div>
+          <div className="h-1 w-16 sm:w-20 bg-[#13463f] mt-1 sm:mt-2 rounded"></div>
         </div>
 
-        {/* Rooms Grid Layout - Responsive grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6">
+        {/* Rooms Grid Layout - Added smaller gap-3 for mobile to prevent cramping */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-6">
           {rooms.map((room, index) => {
             // Generate optimized image on the fly
             const optimizedImg = cld.image(room.imageId).format('auto').quality('auto');
@@ -69,7 +71,7 @@ function ShopByRooms() {
                 className="flex flex-col items-center group cursor-pointer"
               >
                 {/* Image Box with AdvancedImage */}
-                <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-white shadow-sm border border-gray-200 group-hover:shadow-md group-hover:border-[#13463f] transition-all duration-300 mb-3 relative">
+                <div className="w-full aspect-[4/5] rounded-xl overflow-hidden bg-white shadow-sm border border-gray-200 group-hover:shadow-md group-hover:border-[#13463f] transition-all duration-300 mb-2 sm:mb-3 relative">
                   <AdvancedImage 
                     cldImg={optimizedImg} 
                     alt={room.title} 
@@ -79,7 +81,8 @@ function ShopByRooms() {
                 </div>
                 
                 {/* Room Title */}
-                <span className="text-[#0a0a0a] text-sm md:text-base font-semibold text-center group-hover:text-[#13463f] transition-colors duration-300 px-1">
+                {/* Scaled text slightly down to 12px/13px on mobile so long titles like "Study & Workspaces" don't break into messy lines on a narrow grid */}
+                <span className="text-[#0a0a0a] text-[12px] sm:text-[13px] md:text-base font-semibold text-center group-hover:text-[#13463f] transition-colors duration-300 px-1">
                   {room.title}
                 </span>
               </Link>

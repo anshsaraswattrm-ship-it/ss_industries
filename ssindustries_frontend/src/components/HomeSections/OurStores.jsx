@@ -239,23 +239,24 @@ function OurStores() {
 
   return (
     <section 
-      className="w-full py-10 md:py-14 font-sans overflow-hidden"
+      className="w-full py-10 md:py-16 font-sans overflow-hidden"
       style={{ background: 'linear-gradient(135deg, #13463f 0%, #0a241f 100%)' }}
     >
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 md:px-8">
         
         {/* Section Header */}
-        <div className="text-center mb-8 relative z-10">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-white inline-block pb-1 mb-2 tracking-tight">
+        <div className="text-center mb-8 md:mb-12 relative z-10">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white inline-block pb-1 mb-2 tracking-tight">
             Our <span className="font-light italic text-[#d4af37]">Stores</span>
           </h2>
-          <p className="text-gray-300 max-w-xl mx-auto text-xs md:text-sm font-medium">
+          <p className="text-gray-300 max-w-xl mx-auto text-xs md:text-sm font-medium px-4">
             Immerse yourself in our world of luxury.
           </p>
         </div>
 
         {/* =========================================
             DESKTOP VIEW: CINEMATIC SPLITTING SOFA
+            (Hidden on mobile/tablet, exclusively locks at lg: 1024px+)
             ========================================= */}
         <div className="hidden lg:block relative w-full max-w-[1300px] h-[560px] mx-auto rounded-2xl shadow-2xl overflow-hidden bg-[#0a0a0a] border border-[#d4af37]/30">
           
@@ -336,7 +337,7 @@ function OurStores() {
             </button>
           </div>
 
-          {/* Left Sofa Panel (Hover Fixed: Default Transparent, Hover Black) */}
+          {/* Left Sofa Panel */}
           <div 
             className="absolute top-0 left-0 w-1/2 h-full z-20 border-r-2 border-[#d4af37]/40 shadow-[5px_0_20px_rgba(0,0,0,0.5)]"
             style={{
@@ -350,7 +351,7 @@ function OurStores() {
             <div className="absolute inset-0 bg-transparent hover:bg-black/70 transition-colors duration-700"></div>
           </div>
 
-          {/* Right Sofa Panel (Hover Fixed: Default Transparent, Hover Black) */}
+          {/* Right Sofa Panel */}
           <div 
             className="absolute top-0 right-0 w-1/2 h-full z-20 border-l-2 border-[#d4af37]/40 shadow-[-5px_0_20px_rgba(0,0,0,0.5)]"
             style={{
@@ -366,25 +367,33 @@ function OurStores() {
 
         </div>
 
-        {/* Mobile View */}
-        <div className="block lg:hidden space-y-3 mt-6">
-          <div className="bg-[#0a241f] rounded-xl shadow-lg overflow-hidden border border-white/10">
+        {/* =========================================
+            MOBILE & TABLET VIEW: PREMIUM ACCORDION
+            (Displays on screens under 1024px)
+            ========================================= */}
+        {/* Adjusted spacing for tablets (md:space-y-4 md:mt-8) */}
+        <div className="block lg:hidden space-y-3 md:space-y-4 mt-6 md:mt-8">
+          
+          <div className="bg-[#0a241f] rounded-xl shadow-lg overflow-hidden border border-white/10 max-w-2xl mx-auto">
             <button 
-              className="w-full p-4 flex justify-between items-center bg-white/5 border-b border-white/10"
+              className="w-full p-4 md:p-6 flex justify-between items-center bg-white/5 border-b border-white/10"
               onClick={() => setMobileOpen({ ...mobileOpen, store1: !mobileOpen.store1 })}
             >
-              <span className="font-extrabold tracking-wide text-base text-white">Flagship Studio</span>
-              <div className={`w-7 h-7 rounded-full border border-[#d4af37] flex items-center justify-center text-[#d4af37] text-sm transition-transform duration-300 ${mobileOpen.store1 ? 'rotate-180 bg-[#d4af37] text-[#0a241f]' : ''}`}>
+              {/* Scaled text and icons for iPad touch targets */}
+              <span className="font-extrabold tracking-wide text-base md:text-lg text-white">Flagship Studio</span>
+              <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full border border-[#d4af37] flex items-center justify-center text-[#d4af37] text-sm md:text-base transition-transform duration-300 ${mobileOpen.store1 ? 'rotate-180 bg-[#d4af37] text-[#0a241f]' : ''}`}>
                 ↓
               </div>
             </button>
             <div className={`transition-all duration-500 ease-in-out ${mobileOpen.store1 ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
-              <div className="p-4">
-                <p className="text-gray-300 text-xs mb-3 leading-relaxed">
+              <div className="p-4 md:p-6">
+                <p className="text-gray-300 text-xs md:text-sm mb-3 md:mb-4 leading-relaxed">
                   Suiwal Complex, Opp. Sanganer Police Station, Airport Circle, Tonk Rd, Sanganer, Jaipur 302029<br/>
-                  <span className="text-[#d4af37] font-bold mt-1.5 inline-block">📞 [MOBILE NO. HERE]</span>
+                  {/* Replaced placeholder with actual number */}
+                  <span className="text-[#d4af37] font-bold mt-1.5 inline-block">📞 +91 9610774466</span>
                 </p>
-                <div className="w-full h-48 bg-white/5 rounded-lg relative overflow-hidden border border-white/10">
+                {/* Increased map height for tablets (md:h-64) */}
+                <div className="w-full h-48 md:h-64 bg-white/5 rounded-lg relative overflow-hidden border border-white/10">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.643447079183!2d75.79363437609207!3d26.819479464089735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dca05ecacadc5%3A0x15ab99be592b04ea!2sSS%20INDUSTRIES%20FURNITURE!5e0!3m2!1sen!2sin!4v1788515149680!5m2!1sen!2sin" 
                     className="w-full h-full absolute inset-0 border-0" 
@@ -397,23 +406,24 @@ function OurStores() {
             </div>
           </div>
 
-          <div className="bg-[#0a241f] rounded-xl shadow-lg overflow-hidden border border-white/10">
+          <div className="bg-[#0a241f] rounded-xl shadow-lg overflow-hidden border border-white/10 max-w-2xl mx-auto">
             <button 
-              className="w-full p-4 flex justify-between items-center bg-white/5 border-b border-white/10"
+              className="w-full p-4 md:p-6 flex justify-between items-center bg-white/5 border-b border-white/10"
               onClick={() => setMobileOpen({ ...mobileOpen, store2: !mobileOpen.store2 })}
             >
-              <span className="font-extrabold tracking-wide text-base text-white">Heritage Outlet</span>
-              <div className={`w-7 h-7 rounded-full border border-[#d4af37] flex items-center justify-center text-[#d4af37] text-sm transition-transform duration-300 ${mobileOpen.store2 ? 'rotate-180 bg-[#d4af37] text-[#0a241f]' : ''}`}>
+              <span className="font-extrabold tracking-wide text-base md:text-lg text-white">Heritage Outlet</span>
+              <div className={`w-7 h-7 md:w-8 md:h-8 rounded-full border border-[#d4af37] flex items-center justify-center text-[#d4af37] text-sm md:text-base transition-transform duration-300 ${mobileOpen.store2 ? 'rotate-180 bg-[#d4af37] text-[#0a241f]' : ''}`}>
                 ↓
               </div>
             </button>
             <div className={`transition-all duration-500 ease-in-out ${mobileOpen.store2 ? 'max-h-[800px] opacity-100' : 'max-h-0 opacity-0'}`}>
-              <div className="p-4">
-                <p className="text-gray-300 text-xs mb-3 leading-relaxed">
+              <div className="p-4 md:p-6">
+                <p className="text-gray-300 text-xs md:text-sm mb-3 md:mb-4 leading-relaxed">
                   Opp. Torrent CNG pump, near Raj Marriage Garden, Patrakar Colony, Sunder Nagar, Jaipur 302020<br/>
-                  <span className="text-[#d4af37] font-bold mt-1.5 inline-block">📞 [MOBILE NO. HERE]</span>
+                  {/* Replaced placeholder with actual number */}
+                  <span className="text-[#d4af37] font-bold mt-1.5 inline-block">📞 +91 9057201868</span>
                 </p>
-                <div className="w-full h-48 bg-white/5 rounded-lg relative overflow-hidden border border-white/10">
+                <div className="w-full h-48 md:h-64 bg-white/5 rounded-lg relative overflow-hidden border border-white/10">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.727822047592!2d75.75030257609272!3d26.848607962841406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db528c02d7199%3A0xc9fd4380daea72d6!2sSS%20Industries(FURNITURE)!5e0!3m2!1sen!2sin!4v1788515182526!5m2!1sen!2sin" 
                     className="w-full h-full absolute inset-0 border-0" 
@@ -425,6 +435,7 @@ function OurStores() {
               </div>
             </div>
           </div>
+          
         </div>
 
       </div>

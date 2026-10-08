@@ -45,7 +45,7 @@ function Testimonials() {
   const activeTestimonial = testimonials[activeId];
   const activeImg = cld.image(activeTestimonial.imageId).format('auto').quality('auto');
 
-  // Trust Strip Icons Moved Here
+  // Trust Strip Icons
   const icon1 = cld.image('hero1').format('auto').quality('auto');
   const icon2 = cld.image('hero2').format('auto').quality('auto');
   const icon3 = cld.image('hero3').format('auto').quality('auto');
@@ -54,21 +54,23 @@ function Testimonials() {
   return (
     <>
       {/* 1. TESTIMONIALS SECTION */}
-      <section className="w-full py-20 bg-[#0a0a0a] font-sans text-white">
+      {/* Adjusted padding for mobile/tablet to avoid excessive vertical space */}
+      <section className="w-full py-12 md:py-16 lg:py-20 bg-[#0a0a0a] font-sans text-white">
         <div className="max-w-[1350px] mx-auto px-4 md:px-8">
           
-          <div className="mb-12">
-            <h2 className="text-2xl md:text-4xl font-extrabold tracking-tight text-white inline-block border-b-2 border-[#d4af37] pb-2">
+          <div className="mb-8 md:mb-12 text-center lg:text-left">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white inline-block border-b-2 border-[#d4af37] pb-2">
               Customer Testimonials
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
             
-            <div className="lg:col-span-8 bg-gradient-to-br from-[#13463f]/40 via-[#0a0a0a] to-[#0a0a0a] border border-[#13463f] rounded-2xl p-6 md:p-8 relative overflow-hidden shadow-2xl">
-              <div className="flex flex-col md:flex-row gap-6 items-center">
+            <div className="lg:col-span-8 bg-gradient-to-br from-[#13463f]/40 via-[#0a0a0a] to-[#0a0a0a] border border-[#13463f] rounded-2xl p-5 sm:p-6 lg:p-8 relative overflow-hidden shadow-2xl">
+              <div className="flex flex-col md:flex-row gap-5 lg:gap-6 items-center">
                 
-                <div className="relative w-full md:w-[380px] aspect-[16/10] rounded-xl overflow-hidden shadow-lg flex-shrink-0 border border-white/10 group cursor-pointer">
+                {/* Dynamically scaled aspect ratios to prevent squishing on tablets */}
+                <div className="relative w-full md:w-[320px] lg:w-[380px] aspect-[4/3] md:aspect-square lg:aspect-[16/10] rounded-xl overflow-hidden shadow-lg flex-shrink-0 border border-white/10 group cursor-pointer">
                   <AdvancedImage 
                     cldImg={activeImg} 
                     alt={activeTestimonial.name} 
@@ -79,12 +81,15 @@ function Testimonials() {
                   </div>
                 </div>
 
-                <div className="flex flex-col justify-center">
+                <div className="flex flex-col justify-center text-center md:text-left">
                   <h3 className="text-xl md:text-2xl font-bold text-white mb-1">
-                    {activeTestimonial.name} <span className="text-gray-400 font-normal text-base">| {activeTestimonial.role}</span>
+                    {activeTestimonial.name} 
+                    <span className="block md:inline text-gray-400 font-normal text-sm md:text-base mt-1 md:mt-0">
+                      <span className="hidden md:inline"> | </span>{activeTestimonial.role}
+                    </span>
                   </h3>
-                  <div className="w-10 h-0.5 bg-[#d4af37] my-3"></div>
-                  <p className="text-gray-300 text-sm md:text-base font-light leading-relaxed italic">
+                  <div className="w-10 h-0.5 bg-[#d4af37] my-3 mx-auto md:mx-0"></div>
+                  <p className="text-gray-300 text-[13px] sm:text-sm md:text-base font-light leading-relaxed italic">
                     "{activeTestimonial.quote}"
                   </p>
                 </div>
@@ -92,7 +97,9 @@ function Testimonials() {
               </div>
             </div>
 
-            <div className="lg:col-span-4 flex flex-col gap-4">
+            {/* Thumbnail Navigation */}
+            {/* Tablet Upgrade: Changed to a 3-column grid for tablets (sm:grid-cols-3) so they don't stack into a massive vertical tower, locking back to your vertical column on Desktop (lg:grid-cols-1) */}
+            <div className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-3 sm:gap-4">
               {testimonials.map((item, index) => {
                 const isSelected = activeId === index;
                 const thumbImg = cld.image(item.imageId).format('auto').quality('auto');
@@ -101,11 +108,12 @@ function Testimonials() {
                   <div 
                     key={item.id}
                     onClick={() => setActiveId(index)}
-                    className={`flex items-center gap-4 p-3.5 rounded-xl cursor-pointer transition-all duration-300 border ${
+                    // Dynamic flex directions based on device
+                    className={`flex flex-row sm:flex-col lg:flex-row items-center sm:items-start lg:items-center gap-3 sm:gap-4 p-3 sm:p-4 lg:p-3.5 rounded-xl cursor-pointer transition-all duration-300 border ${
                       isSelected ? 'bg-[#13463f]/30 border-[#d4af37] shadow-lg' : 'bg-white/5 border-white/10 hover:border-[#13463f]'
                     }`}
                   >
-                    <div className="w-24 h-16 rounded-lg overflow-hidden relative flex-shrink-0 border border-white/10 group">
+                    <div className="w-20 h-16 sm:w-full sm:h-28 lg:w-24 lg:h-16 rounded-lg overflow-hidden relative flex-shrink-0 border border-white/10 group">
                       <AdvancedImage 
                         cldImg={thumbImg} 
                         alt={item.name} 
@@ -114,10 +122,10 @@ function Testimonials() {
                       {!isSelected && <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors duration-300"></div>}
                     </div>
 
-                    <div className="overflow-hidden">
-                      <h4 className="text-sm font-bold text-white truncate">{item.name}</h4>
-                      <p className="text-xs text-[#d4af37] font-medium truncate">{item.role}</p>
-                      <p className="text-[11px] text-gray-400 truncate mt-0.5">Customer Story</p>
+                    <div className="overflow-hidden text-left w-full">
+                      <h4 className="text-[13px] sm:text-sm font-bold text-white truncate">{item.name}</h4>
+                      <p className="text-[11px] sm:text-xs text-[#d4af37] font-medium truncate">{item.role}</p>
+                      <p className="text-[10px] sm:text-[11px] text-gray-400 truncate mt-0.5 sm:mt-1 lg:mt-0.5">Customer Story</p>
                     </div>
                   </div>
                 );
@@ -128,43 +136,44 @@ function Testimonials() {
         </div>
       </section>
 
-      {/* 2. TRUST STRIP (Moved from Hero)
-      <div className="w-full py-4 md:py-5 relative z-10 bg-[#f5ebe0]">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between bg-white border border-gray-100 rounded-xl shadow-sm px-6 py-5 md:px-10 md:py-5">
+      {/* 2. TRUST STRIP (Commented out as requested, but responsive classes retained) 
+      <div className="w-full py-6 md:py-8 lg:py-5 relative z-10 bg-[#f5ebe0]">
+        <div className="max-w-[1350px] mx-auto px-4 md:px-8">
+          
+          <div className="flex flex-col lg:flex-row items-center justify-between bg-white border border-gray-100 rounded-2xl lg:rounded-xl shadow-sm px-4 py-6 sm:px-6 md:px-10 lg:py-5 gap-6 lg:gap-0">
             
-            <div className="mb-4 md:mb-0 flex-shrink-0 text-center md:text-left">
-              <h2 className="text-xl md:text-2xl font-extrabold text-gray-800 italic leading-tight tracking-tight">
-                Why <br className="hidden md:block" />
+            <div className="flex-shrink-0 text-center lg:text-left">
+              <h2 className="text-2xl md:text-3xl lg:text-2xl font-extrabold text-gray-800 italic leading-tight tracking-tight">
+                Why <br className="hidden lg:block" />
                 <span className="text-gray-800">S.S. Industries?</span>
               </h2>
             </div>
 
-            <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8 w-full md:w-auto">
+            <div className="grid grid-cols-2 sm:flex sm:flex-wrap justify-center items-center gap-4 sm:gap-8 lg:gap-8 xl:gap-12 w-full lg:w-auto">
               
               <div className="flex flex-col items-center text-center group cursor-default">
-                <div className="h-12 w-12 md:h-12 md:w-12 rounded-full border border-gray-100 flex items-center justify-center mb-2.5 group-hover:border-[#d4af37] transition-colors duration-300 overflow-hidden shadow-sm p-1">
+                <div className="h-12 w-12 md:h-14 md:w-14 lg:h-12 lg:w-12 rounded-full border border-gray-100 flex items-center justify-center mb-2.5 group-hover:border-[#d4af37] transition-colors duration-300 overflow-hidden shadow-sm p-1">
                   <AdvancedImage cldImg={icon1} alt="20K+ Happy Customers" className="w-full h-full object-cover rounded-full" />
                 </div>
                 <span className="text-gray-700 text-[10px] md:text-[11px] uppercase tracking-wider font-medium group-hover:text-black transition-colors duration-300">20K+ Happy<br/>Customers</span>
               </div>
               
               <div className="flex flex-col items-center text-center group cursor-default">
-                <div className="h-12 w-12 md:h-12 md:w-12 rounded-full border border-gray-100 flex items-center justify-center mb-2.5 group-hover:border-[#d4af37] transition-colors duration-300 overflow-hidden shadow-sm p-1">
+                <div className="h-12 w-12 md:h-14 md:w-14 lg:h-12 lg:w-12 rounded-full border border-gray-100 flex items-center justify-center mb-2.5 group-hover:border-[#d4af37] transition-colors duration-300 overflow-hidden shadow-sm p-1">
                   <AdvancedImage cldImg={icon2} alt="Free Installation" className="w-full h-full object-cover rounded-full" />
                 </div>
                 <span className="text-gray-700 text-[10px] md:text-[11px] uppercase tracking-wider font-medium group-hover:text-black transition-colors duration-300">Free<br/>Installation</span>
               </div>
               
               <div className="flex flex-col items-center text-center group cursor-default">
-                <div className="h-12 w-12 md:h-12 md:w-12 rounded-full border border-gray-100 flex items-center justify-center mb-2.5 group-hover:border-[#d4af37] transition-colors duration-300 overflow-hidden shadow-sm p-1">
+                <div className="h-12 w-12 md:h-14 md:w-14 lg:h-12 lg:w-12 rounded-full border border-gray-100 flex items-center justify-center mb-2.5 group-hover:border-[#d4af37] transition-colors duration-300 overflow-hidden shadow-sm p-1">
                   <AdvancedImage cldImg={icon3} alt="Best Warranty" className="w-full h-full object-cover rounded-full" />
                 </div>
                 <span className="text-gray-700 text-[10px] md:text-[11px] uppercase tracking-wider font-medium group-hover:text-black transition-colors duration-300">Best<br/>Warranty</span>
               </div>
 
               <div className="flex flex-col items-center text-center group cursor-default">
-                <div className="h-12 w-12 md:h-12 md:w-12 rounded-full border border-gray-100 flex items-center justify-center mb-2.5 group-hover:border-[#d4af37] transition-colors duration-300 overflow-hidden shadow-sm p-1">
+                <div className="h-12 w-12 md:h-14 md:w-14 lg:h-12 lg:w-12 rounded-full border border-gray-100 flex items-center justify-center mb-2.5 group-hover:border-[#d4af37] transition-colors duration-300 overflow-hidden shadow-sm p-1">
                   <AdvancedImage cldImg={icon4} alt="Expert Consultations" className="w-full h-full object-cover rounded-full" />
                 </div>
                 <span className="text-gray-700 text-[10px] md:text-[11px] uppercase tracking-wider font-medium group-hover:text-black transition-colors duration-300">Expert<br/>Consultations</span>
@@ -173,7 +182,8 @@ function Testimonials() {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
+      */}
     </>
   );
 }
