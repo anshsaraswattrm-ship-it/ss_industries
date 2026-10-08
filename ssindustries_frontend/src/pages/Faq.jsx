@@ -62,17 +62,14 @@ function FAQ() {
                 }`}
               >
                 {/* Question Button */}
-                {/* Scaled padding down to py-4/px-4 for mobile to avoid feeling cramped */}
                 <button
                   onClick={() => toggleFAQ(index)}
                   className="w-full py-4 sm:py-5 px-4 sm:px-6 flex items-center justify-between text-left focus:outline-none"
                 >
-                  {/* Added pr-4 so long questions don't overlap the arrow icon on narrow phones */}
                   <span className="font-semibold text-sm sm:text-base md:text-lg text-[#0a0a0a] pr-4">
                     {faq.question}
                   </span>
                   
-                  {/* Replaced the text character "↓" with a crisp SVG arrow. Text arrows often have bad vertical alignment on iOS Safari vs Android Chrome. SVGs are perfectly centered everywhere. */}
                   <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#13463f]/30 flex items-center justify-center text-[#13463f] flex-shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180 bg-[#13463f] text-white border-[#13463f]' : ''}`}>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M6 9l6 6 6-6"/>
@@ -81,9 +78,10 @@ function FAQ() {
                 </button>
 
                 {/* Answer Content */}
-                {/* CRITICAL FIX: Changed max-h-[300px] to max-h-[1000px] so wrapped text on mobile phones doesn't get clipped/cut off */}
                 <div className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? 'max-h-[1000px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                  <div className="p-4 sm:p-6 pt-0 text-gray-700 text-xs sm:text-sm md:text-base font-normal leading-relaxed border-t border-gray-100 mt-2">
+                  {/* MOBILE CENTERING FIX: Changed 'pt-0 mt-2' to 'pt-4 mt-0 sm:pt-0 sm:mt-2' 
+                      This perfectly balances the padding above and below the line on phones, while keeping your exact design for tablet/desktop */}
+                  <div className="p-4 sm:p-6 pt-4 mt-0 sm:pt-0 sm:mt-2 text-gray-700 text-xs sm:text-sm md:text-base font-normal leading-relaxed border-t border-gray-100">
                     {faq.answer}
                   </div>
                 </div>

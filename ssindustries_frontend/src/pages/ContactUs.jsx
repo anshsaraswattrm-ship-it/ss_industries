@@ -60,10 +60,11 @@ function ContactUs() {
       
       {/* 1. Hero Image Section */}
       <section className="w-full bg-[#0a0a0a] border-b-2 sm:border-b-4 border-[#d4af37]">
+        {/* FIX: Added specific heights for mobile & tablet (h-[160px] md:h-[240px]) with object-cover and object-left so text never crops. Restored to h-auto on desktop (lg:). */}
         <AdvancedImage 
           cldImg={contactHeroBg} 
           alt="Contact S.S. Industries" 
-          className="w-full h-auto block" 
+          className="w-full h-[160px] md:h-[240px] lg:h-auto object-cover object-left lg:object-center block" 
         />
       </section>
 
@@ -83,7 +84,6 @@ function ContactUs() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-10">
             
             {/* Card 1: Direct Phone Lines -> Opens Phone Dialer */}
-            {/* Mobile UX: Changed hover:-translate-y-2 to md:hover to prevent stuck hovers on touch, added active:scale */}
             <a 
               href="tel:+919610774466" 
               className="block bg-[#fdfdfd] p-6 sm:p-8 lg:p-10 rounded-2xl lg:rounded-3xl border border-[#d2bfa9] shadow-xl flex flex-col items-center text-center group hover:border-[#13463f] md:hover:-translate-y-2 hover:shadow-2xl active:scale-[0.98] transition-all duration-300"
@@ -139,7 +139,6 @@ function ContactUs() {
       </section>
 
       {/* NEW: Contact Form Section */}
-      {/* Adjusted padding for seamless flow */}
       <section className="bg-white pb-16 sm:pb-20 lg:pb-24 px-4 sm:px-6 md:px-12 lg:px-20">
         <div className="max-w-[900px] mx-auto bg-[#fdfdfd] p-6 sm:p-8 md:p-12 rounded-2xl lg:rounded-3xl border border-[#d2bfa9] shadow-xl relative">
           
@@ -156,7 +155,6 @@ function ContactUs() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               <div>
                 <label htmlFor="name" className="block text-xs sm:text-sm font-bold text-[#0a0a0a] mb-1.5 sm:mb-2">Full Name</label>
-                {/* CRITICAL FIX: text-base on mobile prevents iOS Safari zoom bug */}
                 <input 
                   type="text" 
                   id="name" 
@@ -225,7 +223,6 @@ function ContactUs() {
               ></textarea>
             </div>
 
-            {/* Status Messages */}
             {status.error && <p className="text-red-500 text-xs sm:text-sm text-center font-semibold">{status.error}</p>}
             {status.success && <p className="text-green-600 text-xs sm:text-sm text-center font-semibold">Message sent successfully! We will contact you soon.</p>}
             
@@ -259,7 +256,6 @@ function ContactUs() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
             
             {/* Flagship Studio Card */}
-            {/* Fluid inner padding: p-6 on mobile, locking original p-10 on desktop */}
             <div className="bg-[#0a241f] p-6 sm:p-8 lg:p-10 rounded-2xl lg:rounded-3xl border border-[#13463f] shadow-2xl flex flex-col h-full relative overflow-hidden">
               <div className="absolute inset-0 bg-black/10 pointer-events-none"></div>
               <div className="relative z-10 flex flex-col h-full">
@@ -271,7 +267,6 @@ function ContactUs() {
                   <span className="text-[#d4af37] font-bold mt-1.5 sm:mt-2 inline-block">📞 +91 9610774466</span>
                 </p>
                 
-                {/* GMap 1 */}
                 <div className="flex-grow w-full bg-white/5 rounded-xl overflow-hidden relative shadow-inner border border-white/10 min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.643447079183!2d75.79363437609207!3d26.819479464089735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396dca05ecacadc5%3A0x15ab99be592b04ea!2sSS%20INDUSTRIES%20FURNITURE!5e0!3m2!1sen!2sin!4v1788515149680!5m2!1sen!2sin" 
@@ -296,7 +291,6 @@ function ContactUs() {
                   <span className="text-[#d4af37] font-bold mt-1.5 sm:mt-2 inline-block">📞 +91 9057201868</span>
                 </p>
                 
-                {/* GMap 2 */}
                 <div className="flex-grow w-full bg-white/5 rounded-xl overflow-hidden relative shadow-inner border border-white/10 min-h-[200px] sm:min-h-[250px] lg:min-h-[300px]">
                   <iframe 
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3559.727822047592!2d75.75030257609272!3d26.848607962841406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396db528c02d7199%3A0xc9fd4380daea72d6!2sSS%20Industries(FURNITURE)!5e0!3m2!1sen!2sin!4v1788515182526!5m2!1sen!2sin" 
